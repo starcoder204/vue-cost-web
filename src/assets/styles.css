@@ -1,0 +1,333 @@
+/* Base Styles */
+:root {
+    --primary-color: #4285F4;
+    --secondary-color: #34A853;
+    --highlight-color: #EA4335;
+    --text-color: #202124;
+    --background-color: #F8F9FA;
+    --border-color: #DADCE0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Typography */
+h1, h2, h3 {
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 20px;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-size: 18px;
+    color: var(--primary-color);
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Main Title */
+.main-title {
+    cursor: pointer;
+}
+
+/* About Us Title */
+.about-title {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Login/Logout Title */
+.login-title, .logout-title {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Sections */
+.input-section, .about-section, .radio-section, .login-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.login-section .input-group {
+    margin-bottom: 0 !important;
+}
+
+.about-section p {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.radio-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    /* background-color: #3367D6; */
+}
+
+/* Results Section */
+.results-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* display: none; */
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+    background-color: transparent;
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn.active {
+    border-bottom: 3px solid var(--primary-color);
+    /* color: var(--primary-color); */
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h3 {
+    margin-left: 10px;
+}
+
+/* Results List */
+.result-list {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.result-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.result-list li:nth-child(even) {
+    background-color: var(--background-color);
+}
+
+.totals {
+    margin-top: 20px;
+    background-color: var(--background-color);
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.total-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+/* Comparison Summary */
+.comparison-summary {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: var(--background-color);
+    border-radius: 4px;
+    border-left: 4px solid var(--highlight-color);
+}
+
+.comparison-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.negative {
+    color: var(--highlight-color);
+}
+
+.positive {
+    color: var(--secondary-color);
+}
+
+/* Error Messages */
+.error-message {
+    color: var(--highlight-color);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+button[data-tab="owner-rep"] {
+    color: var(--secondary-color);;
+}
+button[data-tab="gc"] {
+    color: var(--highlight-color);;
+}
+button[data-tab="spec-builder"] {
+    color: gray;
+}
+
+.tabs-container {
+    border: 1px solid var(--primary-color);
+    padding: 5px;
+    border-radius: 6px;
+}
+
+#target_appraisal_input_group {
+    display: none;
+}
+
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .input-section, .login-section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+    
+    .input-group {
+        flex: 1;
+        margin-right: 15px;
+    }
+    
+    button#calculate-btn {
+        align-self: flex-end;
+        margin-bottom: 15px;
+    }
+    
+    /* .tabs-container {
+        display: flex;
+        flex-direction: row;
+    } */
+    
+    /* .tabs {
+        flex-direction: column;
+        border-bottom: none;
+        border-right: 1px solid var(--border-color);
+        padding-right: 15px;
+        margin-right: 20px;
+        width: 150px;
+        height: fit-content;
+    } */
+    
+    /* .tab-btn {
+        text-align: left;
+        margin-bottom: 10px;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+    }
+    
+    .tab-btn.active {
+        border-bottom: none;
+        border-left: 3px solid var(--primary-color);
+    } */
+    
+    /* .tab-content {
+        flex: 1;
+    } */
+}
+
+@media (max-width: 767px) {
+    .login-section {
+        text-align: center;
+    }
+
+    .login-section .input-group {
+        padding-bottom: 10px;
+    }
+
+    .input-section {
+        padding: 15px;
+    }
+    
+    button#calculate-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    header {
+        display: block;
+    }
+}
