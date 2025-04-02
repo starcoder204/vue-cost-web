@@ -120,9 +120,9 @@ export function calculateGCWorkflow(totalHouseArea, costPerSqft = 1000) {
         cost_display: '-'
     });
     
-    // 4. Contingency - Fixed cost
+    // 4. Contingency, Tariffs, Inflation - Fixed cost
     results.push({
-        item: "Contingency",
+        item: "Contingency, Tariffs, Inflation",
         cost: 0,
         cost_display: '-'
     });
@@ -233,9 +233,9 @@ export function calculateOwnerRepWorkflow(totalHouseArea, costPerSqft = 1000) {
         cost_display: '-'
     });
     
-    // 4. Contingency
+    // 4. Contingency, Tariffs, Inflation
     results.push({
-        item: "Contingency",
+        item: "Contingency, Tariffs, Inflation",
         cost: 0.05 * (C1 * 0.55 * J2 + C2 * J2)
     });
     
@@ -351,9 +351,9 @@ export function calculateSpecBuilderWorkflow(totalHouseArea, costPerSqft = 1000)
         cost_display: '-'
     });
     
-    // 4. Contingency
+    // 4. Contingency, Tariffs, Inflation
     results.push({
-        item: "Contingency",
+        item: "Contingency, Tariffs, Inflation",
         cost: 0.05 * (C1 * 0.55 * J2 + C2 * J2)
     });
     
