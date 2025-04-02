@@ -1,6 +1,6 @@
 <template>
     <section class="results-section">
-        <h2>Palisades recommended bank appraisal goal is $1200 a sf . Positive equity is achievable with the VDC Studio Design-Build solution since 2001.</h2>
+        <h2>The Pacific Palisades recommended bank appraisal goal is $1200+ a sf . Positive equity is achievable with the VDC Studio Design-Build strategy unique to your rebuilding goals</h2>
 
         <div class="comparison-summary">
             <div class="comparison-item">
