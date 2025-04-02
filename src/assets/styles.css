@@ -136,10 +136,6 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
-    /* background-color: #3367D6; */
-}
-
 /* Results Section */
 .results-section {
     background-color: white;
