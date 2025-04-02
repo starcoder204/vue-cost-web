@@ -25,7 +25,7 @@
                     *Our ICF cost analysis app values are based on a 5000 sf home with a $1000 a sf recommended cost to maximize the
                     appraised value of your home in the Pacific Palisades.
                 </div>
-                <h2>Enter your values:</h2>
+                <!-- <h2>Enter your values:</h2> -->
                 <div class="input-group">
                     <label for="total-area">Total House Area (sq ft)*</label>
                     <input v-model="totalAreaInput" type="number" @input="validateTotalAreaInput()" id="total-area" placeholder="Enter area..." min="0">
@@ -38,13 +38,11 @@
                     <label for="target-appraisal-per-sf">Target Appraisal Per SF*</label>
                     <input type="number" v-model="targetAppraisalInput" id="target-appraisal-per-sf" placeholder="Enter area..." min="0" value="1200">
                 </div>
+                <div class="input-group">
+                    <label>Total Insurance Recovery Payout</label>
+                    <input type="number" v-model="totalInsurancePayoutInput" placeholder="Enter cost..." min="0" value="0">
+                </div>
                 <button id="calculate-btn" @click="calculateAndDisplayResults()">Calculate</button>
-                <div class="total-insurance-payout-box">
-                    <div class="input-group">
-                        <label>Total Insurance Recovery Payout</label>
-                        <input type="number" v-model="totalInsurancePayoutInput" placeholder="Enter cost..." min="0" value="0">
-                    </div>
-                </div>                
             </section>
 
             <ResultSection 
