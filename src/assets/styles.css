@@ -84,7 +84,7 @@ header p {
 }
 
 /* Sections */
-.section, .input-section, .about-section, .radio-section, .login-section {
+.section, .input-section, .about-section, .radio-section, .login-section, .results-section {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -134,14 +134,6 @@ button {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s;
-}
-
-/* Results Section */
-.results-section {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Tabs */

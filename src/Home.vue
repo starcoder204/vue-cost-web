@@ -39,8 +39,20 @@
                     <input type="number" v-model="targetAppraisalInput" id="target-appraisal-per-sf" placeholder="Enter area..." min="0" value="1200">
                 </div>
                 <button id="calculate-btn" @click="calculateAndDisplayResults()">Calculate</button>
-                
-                <div v-if="resultSectionVisible" class="construction-desc">
+            </section>
+
+            <ResultSection 
+                v-if="resultSectionVisible"
+                :tabObj="tabObj"
+                :activeTab="activeTab"
+                :estimatedValue="estimatedValue"
+                :actualTotal="actualTotal"
+                :netEquity="netEquity"
+                @tab-button-click="watchHighlight"
+            />
+
+            <section class="section">
+                <div class="construction-desc">
                     <div>Understanding Your Rebuilding Options Navigating post-wildfire reconstruction can feel overwhelming.
                     We offer three clear paths tailored to your needs:</div>
                     <br>
@@ -62,24 +74,13 @@
                         <div>VDC+Teams has over 35 yrs of experience creating</div>
                         <div class="construction-desc-sub-header">maximum property valuations and profits</div>
                         New to construction? We partner with aspiring developers through limited-term agreements, hiring the most experienced local site superintendents and subcontractors. We will handle all architecture, engineering, material procurement and all construction documents needed for permits. Whether it’s your first project or you’re expanding your portfolio, we create tailored packages that mitigate risk and streamline compliance.
-                    </div>                        
+                    </div>  
+                    <br/>
+                    <p>
+                        For 30 years, fireproof ICF blocks is what we design and build with, for high value and your families safety
+                    </p>                       
                 </div>
-                <br>
-                <br>
-                <p>
-                    For 30 years, fireproof ICF blocks is what we design and build with, for high value and your families safety
-                </p>                    
             </section>
-
-            <ResultSection 
-                v-if="resultSectionVisible"
-                :tabObj="tabObj"
-                :activeTab="activeTab"
-                :estimatedValue="estimatedValue"
-                :actualTotal="actualTotal"
-                :netEquity="netEquity"
-                @tab-button-click="watchHighlight"
-            />
 
             <RadioSection/>
         </div>
