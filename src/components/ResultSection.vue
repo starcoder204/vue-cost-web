@@ -42,10 +42,6 @@
                         <span>Actual Cost per Sq. foot:</span>
                         <span id="owner-rep-cost-per-sqft">{{formatDecimal(tabObj[key].result.costPerSquareFoot)}}</span>
                     </div>
-                    <div class="total-item">
-                        <span>Total Insurance Payout:</span>
-                        <span>{{formatCurrency(0)}}</span>
-                    </div>
                 </div>
             </div>
         </div>

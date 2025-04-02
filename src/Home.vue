@@ -39,6 +39,12 @@
                     <input type="number" v-model="targetAppraisalInput" id="target-appraisal-per-sf" placeholder="Enter area..." min="0" value="1200">
                 </div>
                 <button id="calculate-btn" @click="calculateAndDisplayResults()">Calculate</button>
+                <div class="total-insurance-payout-input">
+                    <div class="input-group">
+                        <label>Total Insurance Recovery Payout</label>
+                        <input type="number" v-model="totalInsurancePayoutInput" placeholder="Enter cost..." min="0" value="0">
+                    </div>
+                </div>                
             </section>
 
             <ResultSection 
@@ -110,6 +116,7 @@ export default {
         totalAreaInput: 5000,
         costPerSqftInput: 1000,
         targetAppraisalInput: 1200,
+        totalInsurancePayoutInput: 0,
         tabObj: {
             owner_rep: {
                 result: null,

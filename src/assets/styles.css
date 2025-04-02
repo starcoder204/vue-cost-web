@@ -136,6 +136,10 @@ button {
     transition: background-color 0.3s;
 }
 
+.total-insurance-payout-input {
+    width: 100%;
+}
+
 /* Tabs */
 .tabs {
     display: flex;
