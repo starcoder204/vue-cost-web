@@ -7,7 +7,7 @@
             <div class="input-group">
                 <input v-model="password" type="password" id="password" placeholder="Password" />
             </div>
-            <button @click="handleLogin" id="login-btn">Login</button>
+            <button @click="handleLogin">Login</button>
         </section>
     </div>
 </template>

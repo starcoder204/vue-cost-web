@@ -37,7 +37,7 @@ h1 {
     font-size: 24px;
 }
 
-h2 {
+h2.input-value-title {
     font-size: 20px;
     border-bottom: 2px solid var(--primary-color);
     padding-bottom: 5px;
@@ -55,8 +55,15 @@ header {
     padding: 15px 20px;
     margin-bottom: 20px;
     border-radius: 8px;
-    display: flex;
+}
+
+.top-menu-titles {
     justify-content: space-between;
+    display: flex;
+}
+
+header p {
+    font-size: 20px;
 }
 
 /* Main Title */
@@ -77,7 +84,7 @@ header {
 }
 
 /* Sections */
-.input-section, .about-section, .radio-section, .login-section {
+.section, .input-section, .about-section, .radio-section, .login-section {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
@@ -139,7 +146,6 @@ button:hover {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    /* display: none; */
 }
 
 /* Tabs */
@@ -162,10 +168,6 @@ button:hover {
 .tab-btn.active {
     border-bottom: 3px solid var(--primary-color);
     /* color: var(--primary-color); */
-}
-
-.tab-content {
-    display: none;
 }
 
 .tab-content.active {
@@ -254,10 +256,13 @@ button[data-tab="spec-builder"] {
     border-radius: 6px;
 }
 
-#target_appraisal_input_group {
-    display: none;
+.construction-desc-sub-header {
+    text-decoration: underline;
 }
-
+.construction-desc-sub-block {
+    padding: 10px;
+    padding-top: 0px;
+}
 
 /* Responsive Design */
 @media (min-width: 768px) {
@@ -276,37 +281,6 @@ button[data-tab="spec-builder"] {
         align-self: flex-end;
         margin-bottom: 15px;
     }
-    
-    /* .tabs-container {
-        display: flex;
-        flex-direction: row;
-    } */
-    
-    /* .tabs {
-        flex-direction: column;
-        border-bottom: none;
-        border-right: 1px solid var(--border-color);
-        padding-right: 15px;
-        margin-right: 20px;
-        width: 150px;
-        height: fit-content;
-    } */
-    
-    /* .tab-btn {
-        text-align: left;
-        margin-bottom: 10px;
-        border-bottom: none;
-        border-left: 3px solid transparent;
-    }
-    
-    .tab-btn.active {
-        border-bottom: none;
-        border-left: 3px solid var(--primary-color);
-    } */
-    
-    /* .tab-content {
-        flex: 1;
-    } */
 }
 
 @media (max-width: 767px) {
@@ -327,7 +301,7 @@ button[data-tab="spec-builder"] {
         margin-top: 10px;
     }
 
-    header {
+    header .top-menu-titles {
         display: block;
     }
 }
