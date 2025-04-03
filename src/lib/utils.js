@@ -331,7 +331,8 @@ export function calculateSpecBuilderWorkflow(totalHouseArea, costPerSqft = 1000)
     
     // 1. Total Material Allowance
     const C1 = constructionCost / 2;
-    const J2 = 0.60621369032584;
+    // const J2 = 0.60621369032584;
+    const J2 = 1;
     results.push({
         item: "Total Material Allowance",
         cost: C1 * 0.55 * J2
