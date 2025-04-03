@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <Header @main-title-click="mainTitleClicked()" @about-title-click="aboutTitleClicked()"
+        <Header @main-title-click="homeClicked()" @about-title-click="aboutClicked()"
             @login-click="loginSectionVisible = true" @logout-click="logoutClicked" />
 
         <Login v-if="!this.$store.state.user.isLoggedIn && loginSectionVisible" />
@@ -23,25 +23,27 @@
 
             <section class="input-section">
                 <h2>Enter your values:</h2>
-                <div class="input-group">
-                    <label for="total-area">Total House Area (sq ft)*</label>
-                    <input v-model="totalAreaInput" type="number" @input="validateTotalAreaInput()" id="total-area"
-                        placeholder="Enter area..." min="0">
-                </div>
-                <div class="input-group">
-                    <label for="cost-per-sqft">Cost Per Square Foot ($)*</label>
-                    <input v-model="costPerSqftInput" type="number" @input="validateCostPerSqftInput()"
-                        id="cost-per-sqft" placeholder="Enter cost..." min="0">
-                </div>
-                <div class="input-group" id="target_appraisal_input_group">
-                    <label for="target-appraisal-per-sf">Target Appraisal Per SF*</label>
-                    <input type="number" v-model="targetAppraisalInput" id="target-appraisal-per-sf"
-                        placeholder="Enter area..." min="0" value="1200">
-                </div>
-                <div class="input-group">
-                    <label>Total Insurance Recovery Payout</label>
-                    <input type="number" v-model="totalInsurancePayoutInput" placeholder="Enter cost..." min="0"
-                        value="0">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="total-area">Total House Area (sq ft)*</label>
+                        <input v-model="totalAreaInput" type="number" @input="validateTotalAreaInput()" id="total-area"
+                            placeholder="Enter area..." min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="cost-per-sqft">Cost Per Square Foot ($)*</label>
+                        <input v-model="costPerSqftInput" type="number" @input="validateCostPerSqftInput()"
+                            id="cost-per-sqft" placeholder="Enter cost..." min="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="target-appraisal-per-sf">Target Appraisal Per SF*</label>
+                        <input type="number" v-model="targetAppraisalInput" id="target-appraisal-per-sf"
+                            placeholder="Enter area..." min="0" value="1200">
+                    </div>
+                    <div class="input-group">
+                        <label>Total Insurance Recovery Payout</label>
+                        <input type="number" v-model="totalInsurancePayoutInput" placeholder="Enter cost..." min="0"
+                            value="0">
+                    </div>
                 </div>
                 <button id="calculate-btn" @click="calculateAndDisplayResults()">Calculate</button>
                 <div>
@@ -97,6 +99,8 @@
             </section>
 
             <RadioSection />
+
+            <ScrollToTop />
         </div>
     </div>
 </template>
@@ -105,16 +109,14 @@
 import Header from './components/Header.vue';
 import Login from './components/Login.vue';
 import About from './components/About.vue';
-import RadioSection from './components/RadioSection.vue';
 import ResultSection from './components/ResultSection.vue';
+import RadioSection from './components/RadioSection.vue';
+import ScrollToTop from './components/ScrollToTop.vue';
 import { validationConfig } from './config/validationConfig';
 import { validateInput, calculateGCWorkflow, calculateOwnerRepWorkflow, calculateSpecBuilderWorkflow } from './lib/utils';
 export default {
-  components: { Header, Login, About, RadioSection, ResultSection },
+  components: { Header, Login, About, ResultSection, RadioSection, ScrollToTop },
   name: 'Home',
-  props: {
-    msg: String
-  },
   data() {
     return {
         mainSectionVisible: true,
@@ -148,11 +150,11 @@ export default {
   created() {
   },
   methods: {
-    mainTitleClicked() {
+    homeClicked() {
         this.mainSectionVisible = true;
         this.aboutSectionVisible = false;
     },
-    aboutTitleClicked() {
+    aboutClicked() {
         this.aboutSectionVisible = true;
         this.mainSectionVisible = false;
     },
@@ -213,8 +215,10 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.input-section h2 {
-    width: 100%;
+<style lang="scss" scoped>
+.input-section {
+    h2 {
+        width: 100%;
+    }
 }
 </style>

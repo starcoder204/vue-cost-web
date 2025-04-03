@@ -9,6 +9,9 @@
             </div>
             <button @click="handleLogin">Login</button>
         </section>
+        <div v-if="isLoading" class="loading-overlay">
+            Loading...
+        </div>
     </div>
 </template>
 
@@ -20,19 +23,23 @@ export default {
         return {
             email: '',
             password: '',
+            isLoading: false,
         }
     },
     methods: {
         handleLogin() {
             if (this.email != '' || this.password != '') {
+                this.isLoading = true;
                 signInWithEmailAndPassword(auth, this.email, this.password)
                 .then((userCredential) => {
                     // Successful login
+                    this.isLoading = false;
                     const user = userCredential.user;
                     this.$store.dispatch('login', { name: user.displayName, email: user.email });
                 })
                 .catch((error) => {
                     console.log(error.message)
+                    this.isLoading = false;
                     alert("Error: " + error.message);
                 });
             }
@@ -40,3 +47,20 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.loading-overlay {
+  position: fixed; /* Positioning relative to the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  font-size: 20px;
+  z-index: 1000; /* Make sure it covers other content */
+}
+</style>
