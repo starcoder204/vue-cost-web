@@ -10,7 +10,7 @@
             <button @click="handleLogin">Login</button>
         </section>
         <div v-if="isLoading" class="loading-overlay">
-            Loading...
+            Waiting...
         </div>
     </div>
 </template>
