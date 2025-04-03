@@ -1,11 +1,7 @@
 <template>
-  <div class="container">
-        <Header
-            @main-title-click="mainTitleClicked()"
-            @about-title-click="aboutTitleClicked()"
-            @login-click="loginSectionVisible = true"
-            @logout-click="logoutClicked"
-        />
+    <div class="container">
+        <Header @main-title-click="mainTitleClicked()" @about-title-click="aboutTitleClicked()"
+            @login-click="loginSectionVisible = true" @logout-click="logoutClicked" />
 
         <Login v-if="!this.$store.state.user.isLoggedIn && loginSectionVisible" />
 
@@ -13,80 +9,94 @@
 
         <div v-if="mainSectionVisible" class="main-container">
             <section class="section">
-                <p><strong>Underinsurance Prevalence:</strong> Research indicates that a significant portion of homeowners are underinsured, with estimates suggesting that 74% to 75% of homeowners might not have adequate coverage to rebuild their homes after a disaster.</p>
-                <br/>
+                <p><strong>Underinsurance Prevalence:</strong> Research indicates that a significant portion of
+                    homeowners are underinsured, with estimates suggesting that 74% to 75% of homeowners might not have
+                    adequate coverage to rebuild their homes after a disaster.</p>
+                <br />
                 <p>
-                    By front-loading the valuation analysis and using owner-representative cost controls, VDC STUDIO converts insurance limitations into structured equity growth – a financial necessity in wildfire-prone luxury markets where many of the underinsured homeowners never fully recover their property value after disasters.
+                    By front-loading the valuation analysis and using owner-representative cost controls, VDC STUDIO
+                    converts insurance limitations into structured equity growth – a financial necessity in
+                    wildfire-prone luxury markets where many of the underinsured homeowners never fully recover their
+                    property value after disasters.
                 </p>
             </section>
 
             <section class="input-section">
-                <div>
-                    *Our ICF cost analysis app values are based on a 5000 sf home with a $1000 a sf recommended cost to maximize the
-                    appraised value of your home in the Pacific Palisades.
-                </div>
-                <!-- <h2>Enter your values:</h2> -->
+                <h2>Enter your values:</h2>
                 <div class="input-group">
                     <label for="total-area">Total House Area (sq ft)*</label>
-                    <input v-model="totalAreaInput" type="number" @input="validateTotalAreaInput()" id="total-area" placeholder="Enter area..." min="0">
+                    <input v-model="totalAreaInput" type="number" @input="validateTotalAreaInput()" id="total-area"
+                        placeholder="Enter area..." min="0">
                 </div>
                 <div class="input-group">
                     <label for="cost-per-sqft">Cost Per Square Foot ($)*</label>
-                    <input v-model="costPerSqftInput" type="number" @input="validateCostPerSqftInput()" id="cost-per-sqft" placeholder="Enter cost..." min="0">
+                    <input v-model="costPerSqftInput" type="number" @input="validateCostPerSqftInput()"
+                        id="cost-per-sqft" placeholder="Enter cost..." min="0">
                 </div>
                 <div class="input-group" id="target_appraisal_input_group">
                     <label for="target-appraisal-per-sf">Target Appraisal Per SF*</label>
-                    <input type="number" v-model="targetAppraisalInput" id="target-appraisal-per-sf" placeholder="Enter area..." min="0" value="1200">
+                    <input type="number" v-model="targetAppraisalInput" id="target-appraisal-per-sf"
+                        placeholder="Enter area..." min="0" value="1200">
                 </div>
                 <div class="input-group">
                     <label>Total Insurance Recovery Payout</label>
-                    <input type="number" v-model="totalInsurancePayoutInput" placeholder="Enter cost..." min="0" value="0">
+                    <input type="number" v-model="totalInsurancePayoutInput" placeholder="Enter cost..." min="0"
+                        value="0">
                 </div>
                 <button id="calculate-btn" @click="calculateAndDisplayResults()">Calculate</button>
+                <div>
+                    *Our ICF cost analysis app values are based on a 5000 sf home with a $1000 a sf recommended cost to
+                    maximize the appraised value of your home in the Pacific Palisades.
+                </div>
+                <p>
+                    For 30 years, fireproof ICF blocks is what we design and build with, for high value and your
+                    families safety
+                </p>
             </section>
 
-            <ResultSection 
-                v-if="resultSectionVisible"
-                :tabObj="tabObj"
-                :activeTab="activeTab"
-                :estimatedValue="estimatedValue"
-                :actualTotal="actualTotal"
-                :netEquity="netEquity"
-                @tab-button-click="watchHighlight"
-            />
+            <ResultSection v-if="resultSectionVisible" :tabObj="tabObj" :activeTab="activeTab"
+                :estimatedValue="estimatedValue" :actualTotal="actualTotal" :netEquity="netEquity"
+                @tab-button-click="watchHighlight" />
 
             <section class="section">
                 <div class="construction-desc">
-                    <div>Understanding Your Rebuilding Options Navigating post-wildfire reconstruction can feel overwhelming.
-                    We offer three clear paths tailored to your needs:</div>
+                    <div>Understanding Your Rebuilding Options Navigating post-wildfire reconstruction can feel
+                        overwhelming.
+                        We offer three clear paths tailored to your needs:</div>
                     <br>
                     <div><b>1. Traditional General Contractor & Architect:</b></div>
                     <div class="construction-desc-sub-block">
                         <div>Wood Structures and non fireproof construction</div>
                         <div class="construction-desc-sub-header">Most likely to produce negative property equity</div>
-                        Compare industry-standard costs for conventional wood-frame rebuilding with our innovative, fire-resistant ICF (Insulated Concrete Form) construction. While wood remains common, our method prioritizes safety and durability in wildfire-prone areas.
+                        Compare industry-standard costs for conventional wood-frame rebuilding with our innovative,
+                        fire-resistant ICF (Insulated Concrete Form) construction. While wood remains common, our method
+                        prioritizes safety and durability in wildfire-prone areas.
                     </div>
                     <br>
                     <div><b>2. VDC+Owner Rep Design-Build Contract: </b></div>
                     <div class="construction-desc-sub-block">
                         <div class="construction-desc-sub-header">Produces high positive property equity</div>
-                        Our recommended solution combines efficiency, cost savings, and premium quality for maximum property valuation. By eliminating general contractor overhead, we reinvest those funds into higher-grade materials and advanced planning tools like 3D virtual modeling. This approach reduces unexpected costs by up to 80% compared to traditional methods, while providing 24/7 remote site monitoring and expert guidance.
+                        Our recommended solution combines efficiency, cost savings, and premium quality for maximum
+                        property valuation. By eliminating general contractor overhead, we reinvest those funds into
+                        higher-grade materials and advanced planning tools like 3D virtual modeling. This approach
+                        reduces unexpected costs by up to 80% compared to traditional methods, while providing 24/7
+                        remote site monitoring and expert guidance.
                     </div>
                     <br>
                     <div><b>3. Spec Builder or First-Time Builder Partnerships:</b></div>
                     <div class="construction-desc-sub-block">
                         <div>VDC+Teams has over 35 yrs of experience creating</div>
                         <div class="construction-desc-sub-header">maximum property valuations and profits</div>
-                        New to construction? We partner with aspiring developers through limited-term agreements, hiring the most experienced local site superintendents and subcontractors. We will handle all architecture, engineering, material procurement and all construction documents needed for permits. Whether it’s your first project or you’re expanding your portfolio, we create tailored packages that mitigate risk and streamline compliance.
-                    </div>  
-                    <br/>
-                    <p>
-                        For 30 years, fireproof ICF blocks is what we design and build with, for high value and your families safety
-                    </p>                       
+                        New to construction? We partner with aspiring developers through limited-term agreements, hiring
+                        the most experienced local site superintendents and subcontractors. We will handle all
+                        architecture, engineering, material procurement and all construction documents needed for
+                        permits. Whether it’s your first project or you’re expanding your portfolio, we create tailored
+                        packages that mitigate risk and streamline compliance.
+                    </div>
                 </div>
             </section>
 
-            <RadioSection/>
+            <RadioSection />
         </div>
     </div>
 </template>
@@ -204,4 +214,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.input-section h2 {
+    width: 100%;
+}
 </style>
