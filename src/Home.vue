@@ -45,6 +45,11 @@
                             value="0">
                     </div>
                 </div>
+                <div class="input-group" style="margin-top: 1rem">
+                    <label>Estimated Extended Insurance Coverage</label>
+                    <input type="number" v-model="extendedInsuranceCoverageInput" placeholder="Enter cost..." min="0"
+                        value="0">
+                </div>
                 <button id="calculate-btn" @click="calculateAndDisplayResults()">Calculate</button>
                 <div>
                     *Our ICF cost analysis app values are based on a 5000 sf home with a $1000 a sf recommended cost to
@@ -56,9 +61,17 @@
                 </p>
             </section>
 
-            <ResultSection v-if="resultSectionVisible" :tabObj="tabObj" :activeTab="activeTab"
-                :estimatedValue="estimatedValue" :actualTotal="actualTotal" :netEquity="netEquity"
-                @tab-button-click="watchHighlight" />
+            <ResultSection
+                v-if="resultSectionVisible"
+                :tabObj="tabObj"
+                :activeTab="activeTab"
+                :estimatedValue="estimatedValue"
+                :actualTotal="actualTotal"
+                :netEquity="netEquity"
+                :totalInsurancePayoutAmout="totalInsurancePayoutInput"
+                :extendedInsuranceCoverageAmount="extendedInsuranceCoverageInput"
+                @tab-button-click="watchHighlight"
+            />
 
             <section class="section">
                 <div class="construction-desc">
@@ -127,6 +140,7 @@ export default {
         costPerSqftInput: 1000,
         targetAppraisalInput: 1200,
         totalInsurancePayoutInput: 0,
+        extendedInsuranceCoverageInput: 0,
         tabObj: {
             owner_rep: {
                 result: null,

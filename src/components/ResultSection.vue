@@ -53,8 +53,12 @@
                         <span id="owner-rep-cost-per-sqft">{{formatDecimal(tabObj[key].result.costPerSquareFoot)}}</span>
                     </div>
                     <div class="total-item">
-                        <span>Total Insurance Payout:</span>
-                        <span id="owner-rep-cost-per-sqft">{{ formatCurrency(0) }}</span>
+                        <span>Guaranteed Insurance Payout:</span>
+                        <span id="owner-rep-cost-per-sqft">{{ formatCurrency(totalInsurancePayoutAmout) }}</span>
+                    </div>
+                    <div class="total-item">
+                        <span>Estimated Extended Insurance Coverage:</span>
+                        <span id="owner-rep-cost-per-sqft">{{ formatCurrency(extendedInsuranceCoverageAmount) }}</span>
                     </div>
                 </div>
             </div>
@@ -65,7 +69,15 @@
 <script>
 import { formatCurrency, formatDecimal } from './../lib/utils';
 export default {
-    props: ['tabObj', 'activeTab', 'estimatedValue', 'actualTotal', 'netEquity'],
+    props: [
+        'tabObj',
+        'activeTab',
+        'estimatedValue',
+        'actualTotal',
+        'netEquity',
+        'totalInsurancePayoutAmout',
+        'extendedInsuranceCoverageAmount'
+    ],
     data() {
         return {
             actTab: this.activeTab,
