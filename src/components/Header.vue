@@ -6,7 +6,7 @@
             <nav class="top-menu">
                 <a href="javascript:void(0);" @click="$emit('main-title-click')">Home</a>
                 <a href="javascript:void(0);" @click="$emit('about-title-click')">About Us</a>
-                <a href="javascript:void(0);" @click="$emit('login-click')" v-if="!this.$store.state.user.isLoggedIn">Login</a>
+                <a href="javascript:void(0);" @click="$emit('login-click')" v-if="!this.$store.state.user.isLoggedIn">Login, Real Estate Investor</a>
                 <a href="javascript:void(0);" @click="$emit('logout-click')" v-if="this.$store.state.user.isLoggedIn">Logout</a>
             </nav>
             <p>

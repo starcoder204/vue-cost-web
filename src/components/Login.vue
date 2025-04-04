@@ -36,6 +36,7 @@ export default {
                     this.isLoading = false;
                     const user = userCredential.user;
                     this.$store.dispatch('login', { name: user.displayName, email: user.email });
+                    this.$emit('login-callback');
                 })
                 .catch((error) => {
                     console.log(error.message)

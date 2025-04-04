@@ -3,7 +3,7 @@
         <Header @main-title-click="homeClicked()" @about-title-click="aboutClicked()"
             @login-click="loginSectionVisible = true" @logout-click="logoutClicked" />
 
-        <Login v-if="!this.$store.state.user.isLoggedIn && loginSectionVisible" />
+        <Login v-if="!this.$store.state.user.isLoggedIn && loginSectionVisible" @login-callback="loginCallback" />
 
         <About v-if="aboutSectionVisible" />
 
@@ -163,6 +163,11 @@ export default {
   },
   created() {
   },
+  mounted() {
+    if (this.$store.state.user.isLoggedIn) {
+       this.activeTab = 'spec_builder';
+    }
+  },
   methods: {
     homeClicked() {
         this.mainSectionVisible = true;
@@ -172,6 +177,15 @@ export default {
         this.aboutSectionVisible = true;
         this.mainSectionVisible = false;
     },
+    loginCallback() {
+        this.resultSectionVisible = false;
+        this.activeTab = 'spec_builder';
+        this.$nextTick(() => {
+            this.resultSectionVisible = true;
+            this.costPerSqftInput = 700;
+            this.calculateAndDisplayResults();
+        })        
+    },
     logoutClicked() {
         this.$store.dispatch('logout');
         if (this.activeTab == 'spec_builder') {
@@ -179,8 +193,10 @@ export default {
             this.activeTab = 'owner_rep';
             this.$nextTick(() => {
                 this.resultSectionVisible = true;
+                this.costPerSqftInput = 1000;
+                this.calculateAndDisplayResults();
             })
-        }
+        }        
     },
     validateTotalAreaInput() {
         return validateInput(document.getElementById('total-area'), validationConfig.totalArea);

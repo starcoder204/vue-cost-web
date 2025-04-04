@@ -24,9 +24,9 @@
                 href="mailto:manager@vdc-bim.team">manager@vdc-bim.team</a> if you're a real estate developer.</p>
         <div class="tabs-container">
             <div class="tabs">
-                <button class="tab-btn" @click="tabButtonClicked('owner_rep')"
+                <button v-if="!this.$store.state.user.isLoggedIn" class="tab-btn" @click="tabButtonClicked('owner_rep')"
                     :class="{ 'active': actTab == 'owner_rep' }" data-tab="owner-rep">Owner Rep</button>
-                <button class="tab-btn" @click="tabButtonClicked('gc')" :class="{ 'active': actTab == 'gc' }"
+                <button v-if="!this.$store.state.user.isLoggedIn" class="tab-btn" @click="tabButtonClicked('gc')" :class="{ 'active': actTab == 'gc' }"
                     data-tab="gc">Traditional GC</button>
                 <button class="tab-btn" @click="tabButtonClicked('spec_builder')"
                     :class="{ 'active': actTab == 'spec_builder' }" v-if="this.$store.state.user.isLoggedIn"
