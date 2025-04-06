@@ -22,45 +22,48 @@
         <p>We offer three options to rebuild your property with VDC Studio, For the spec builder option you will need a
             invitation to view the cost analysis, please email <a
                 href="mailto:manager@vdc-bim.team">manager@vdc-bim.team</a> if you're a real estate developer.</p>
+
         <div class="tabs-container">
             <div class="tabs">
-                <button v-if="!this.$store.state.user.isLoggedIn" class="tab-btn" @click="tabButtonClicked('owner_rep')"
+                <button v-if="this.$route.name === 'Home'" class="tab-btn" @click="tabButtonClicked('owner_rep')"
                     :class="{ 'active': actTab == 'owner_rep' }" data-tab="owner-rep">Owner Rep</button>
-                <button v-if="!this.$store.state.user.isLoggedIn" class="tab-btn" @click="tabButtonClicked('gc')" :class="{ 'active': actTab == 'gc' }"
+                <button v-if="this.$route.name === 'Home'" class="tab-btn" @click="tabButtonClicked('gc')" :class="{ 'active': actTab == 'gc' }"
                     data-tab="gc">Traditional GC</button>
-                <button class="tab-btn" @click="tabButtonClicked('spec_builder')"
-                    :class="{ 'active': actTab == 'spec_builder' }" v-if="this.$store.state.user.isLoggedIn"
+                <button v-if="this.$route.name === 'SpecBuilder'" class="tab-btn" @click="tabButtonClicked('spec_builder')"
+                    :class="{ 'active': actTab == 'spec_builder' }"
                     data-tab="spec-builder">Spec Builder</button>
             </div>
 
             <div v-for="(key, index) in Object.keys(tabObj)" :key="index" v-show="actTab == key"
                 class="tab-content active" id="owner-rep-tab">
-                <h3>{{ tabObj[key].title }}</h3>
-                <ul class="result-list" id="owner-rep-results">
-                    <li v-for="(item, index) in tabObj[key].result.lineItems" :key="index">
-                        <span>{{`${index + 1}. ${item.item}`}}</span>
-                        <span :class="item.cost < 0 ? 'negative' : 'zero'">{{item.cost == 0 ? item.cost_display :
-                            formatCurrency(item.cost)}}</span>
-                    </li>
-                </ul>
-                <div class="totals">
-                    <div class="total-item">
-                        <span>Actual Total Construction Cost:</span>
-                        <span id="owner-rep-total-cost">{{formatCurrency(tabObj[key].result.totalCost)}}</span>
+                <div v-if="tabObj[key].result">
+                    <h3>{{ tabObj[key].title }}</h3>
+                    <ul class="result-list" id="owner-rep-results">
+                        <li v-for="(item, index) in tabObj[key].result.lineItems" :key="index">
+                            <span>{{`${index + 1}. ${item.item}`}}</span>
+                            <span :class="item.cost < 0 ? 'negative' : 'zero'">{{item.cost == 0 ? item.cost_display :
+                                formatCurrency(item.cost)}}</span>
+                        </li>
+                    </ul>
+                    <div class="totals">
+                        <div class="total-item">
+                            <span>Actual Total Construction Cost:</span>
+                            <span id="owner-rep-total-cost">{{formatCurrency(tabObj[key].result.totalCost)}}</span>
+                        </div>
+                        <div class="total-item">
+                            <span>Actual Cost per Sq. foot:</span>
+                            <span id="owner-rep-cost-per-sqft">{{formatDecimal(tabObj[key].result.costPerSquareFoot)}}</span>
+                        </div>
+                        <div class="total-item">
+                            <span>Guaranteed Insurance Payout:</span>
+                            <span id="owner-rep-cost-per-sqft">{{ formatCurrency(totalInsurancePayoutAmout) }}</span>
+                        </div>
+                        <div class="total-item">
+                            <span>Estimated Extended Insurance Coverage:</span>
+                            <span id="owner-rep-cost-per-sqft">{{ formatCurrency(extendedInsuranceCoverageAmount) }}</span>
+                        </div>
                     </div>
-                    <div class="total-item">
-                        <span>Actual Cost per Sq. foot:</span>
-                        <span id="owner-rep-cost-per-sqft">{{formatDecimal(tabObj[key].result.costPerSquareFoot)}}</span>
-                    </div>
-                    <div class="total-item">
-                        <span>Guaranteed Insurance Payout:</span>
-                        <span id="owner-rep-cost-per-sqft">{{ formatCurrency(totalInsurancePayoutAmout) }}</span>
-                    </div>
-                    <div class="total-item">
-                        <span>Estimated Extended Insurance Coverage:</span>
-                        <span id="owner-rep-cost-per-sqft">{{ formatCurrency(extendedInsuranceCoverageAmount) }}</span>
-                    </div>
-                </div>
+                </div>                
             </div>
         </div>
     </section>
