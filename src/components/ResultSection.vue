@@ -41,7 +41,8 @@
                     <ul class="result-list" id="owner-rep-results">
                         <li v-for="(item, index) in tabObj[key].result.lineItems" :key="index">
                             <span>{{`${index + 1}. ${item.item}`}}</span>
-                            <span :class="item.cost < 0 ? 'negative' : 'zero'">{{item.cost == 0 ? item.cost_display :
+                            <!-- <span :class="item.cost < 0 ? 'negative' : 'zero'">{{item.cost == 0 ? item.cost_display : -->
+                            <span :class="item.cost < 0 ? 'negative' : 'zero'">{{item.cost_display ? item.cost_display :
                                 formatCurrency(item.cost)}}</span>
                         </li>
                     </ul>

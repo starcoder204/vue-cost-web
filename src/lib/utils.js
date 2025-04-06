@@ -103,7 +103,8 @@ export function calculateGCWorkflow(totalHouseArea, costPerSqft = 1000) {
     const C1 = constructionCost / 2;
     results.push({
         item: "Total Material Allowance",
-        cost: C1
+        cost: C1,
+        cost_display: '-'
     });
     
     // 2. Total Labor Cost - 15% of construction cost
@@ -130,7 +131,8 @@ export function calculateGCWorkflow(totalHouseArea, costPerSqft = 1000) {
     // 5. Architecture/Engineering Allowance Ready to Start Construction - 4% of construction cost
     results.push({
         item: "Architecture/Engineering Allowance Ready to Start Construction",
-        cost: 0.08 * (C1 + C2)
+        cost: 0.08 * (C1 + C2),
+        cost_display: '-'
     });
     
     // 6. Estimated Permit Fee for Burned lots - 10% of construction cost
@@ -216,7 +218,8 @@ export function calculateOwnerRepWorkflow(totalHouseArea, costPerSqft = 1000) {
     const J2 = 1;
     results.push({
         item: "Total Material Allowance",
-        cost: C1 * 0.55 * J2
+        cost: C1 * 0.55 * J2,
+        cost_display: '-'
     });
     
     // 2. Total Labor Cost
