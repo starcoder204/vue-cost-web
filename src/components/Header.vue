@@ -4,10 +4,11 @@
                 <h1>VDC Studio Wildfire Rebuilding Valuation App</h1>
             </div>
             <nav class="top-menu">
-                <a href="javascript:void(0);" @click="$emit('main-title-click')">Home</a>
-                <a href="javascript:void(0);" @click="$emit('about-title-click')">About Us</a>
-                <a href="javascript:void(0);" @click="$emit('login-click')" v-if="!this.$store.state.user.isLoggedIn">Login, Real Estate Investor</a>
-                <a href="javascript:void(0);" @click="$emit('logout-click')" v-if="this.$store.state.user.isLoggedIn">Logout</a>
+                <router-link to="/" :class="{ 'active': this.$route.name === 'Home'}">Home</router-link>
+                <router-link to="/spec-builder" v-if="this.$store.state.user.isLoggedIn">Spec Builder</router-link>
+                <router-link to="/about">About Us</router-link>
+                <router-link to="/login" v-if="!this.$store.state.user.isLoggedIn">Login, Real Estate Investor</router-link>
+                <a href="javascript:void(0);" @click="logoutClicked()" v-if="this.$store.state.user.isLoggedIn">Logout</a>
             </nav>
             <p>
                 What We Do Best Is 3D Design Valuation Analysis
@@ -18,6 +19,12 @@
 
 <script>
 export default {
+    methods: {
+        logoutClicked() {
+            this.$store.dispatch('logout');
+            this.$router.push('/').catch(()=>{});
+        },
+    }
 }
 </script>
 
@@ -28,7 +35,7 @@ export default {
 
 .top-menu {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(4, auto);
     gap: 1rem;
     padding: 0.3rem;
 }
@@ -38,6 +45,9 @@ export default {
     color: white;
     font-size: 22px;
     text-align: center;
+    &.router-link-exact-active {
+        color: #202124;
+    }
 }
 
 /* Mobile */
