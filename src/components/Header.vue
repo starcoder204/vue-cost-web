@@ -11,8 +11,7 @@
                 <a href="javascript:void(0);" @click="logoutClicked()" v-if="this.$store.state.user.isLoggedIn">Logout</a>
             </nav>
             <p>
-                What We Do Best Is 3D Design Valuation Analysis
-                30+ years of experience behind our method and it works.
+                What we do best is 3D architetcure and design valuation analysis, with over 30 years of experience behind every analysis.
             </p>
         </header>
 </template>
