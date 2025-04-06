@@ -3,7 +3,7 @@
             <div class="header-title">
                 <h1>VDC Studio Wildfire Rebuilding Valuation App</h1>
             </div>
-            <nav class="top-menu">
+            <nav class="top-menu" :class="{ 'logged': this.$store.state.user.isLoggedIn }">
                 <router-link to="/" :class="{ 'active': this.$route.name === 'Home'}">Home</router-link>
                 <router-link to="/spec-builder" v-if="this.$store.state.user.isLoggedIn">Spec Builder</router-link>
                 <router-link to="/about">About Us</router-link>
@@ -34,9 +34,12 @@ export default {
 
 .top-menu {
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(3, auto);
     gap: 1rem;
     padding: 0.3rem;
+    &.logged {
+        grid-template-columns: repeat(4, auto);
+    }
 }
 
 /* Menu links */
@@ -45,7 +48,7 @@ export default {
     font-size: 22px;
     text-align: center;
     &.router-link-exact-active {
-        color: #202124;
+        color: #ebc3c3;
     }
 }
 

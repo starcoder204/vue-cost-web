@@ -182,9 +182,9 @@ export function calculateGCWorkflow(totalHouseArea, costPerSqft = 1000) {
         cost_display: '-'
     });
     
-    // 13. Anticipated Typical Change Orders - Fixed cost
+    // 13. 12.5% Anticipated Change Orders - Fixed cost
     results.push({
-        item: "Anticipated Typical Change Orders",
+        item: "12.5% Anticipated Change Orders",
         cost: 0.125 * TotalPprojectCost
     });
     
@@ -294,10 +294,10 @@ export function calculateOwnerRepWorkflow(totalHouseArea, costPerSqft = 1000) {
         cost: 0.09 * TotalPprojectCost * J2
     });
     
-    // 13. Anticipated Typical Change Orders
+    // 13. 12.5% Anticipated Change Orders
     const K24 = 0.025;
     results.push({
-        item: "Anticipated Typical Change Orders",
+        item: "12.5% Anticipated Change Orders",
         cost: K24 * TotalPprojectCost * J2
     });
 
@@ -413,10 +413,10 @@ export function calculateSpecBuilderWorkflow(totalHouseArea, costPerSqft = 1000)
         cost: 0.09 * K23 * J2
     });
     
-    // 13. Anticipated Typical Change Orders
+    // 13. 12.5% Anticipated Change Orders
     const K24 = 0.025;
     results.push({
-        item: "Anticipated Typical Change Orders",
+        item: "12.5% Anticipated Change Orders",
         cost: K24 * K23 * J2
     });
 
