@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="main-container">
-            <!-- <SectionTop /> -->
+            <SectionTop />
             
             <InputSection
                 :defaultCostPerSqftInput="700"
