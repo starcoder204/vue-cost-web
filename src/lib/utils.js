@@ -294,10 +294,10 @@ export function calculateOwnerRepWorkflow(totalHouseArea, costPerSqft = 1000) {
         cost: 0.09 * TotalPprojectCost * J2
     });
     
-    // 13. 12.5% Anticipated Change Orders
+    // 13. 2.5% Anticipated Change Orders
     const K24 = 0.025;
     results.push({
-        item: "12.5% Anticipated Change Orders",
+        item: "2.5% Anticipated Change Orders",
         cost: K24 * TotalPprojectCost * J2
     });
 
@@ -413,10 +413,10 @@ export function calculateSpecBuilderWorkflow(totalHouseArea, costPerSqft = 1000)
         cost: 0.09 * K23 * J2
     });
     
-    // 13. 12.5% Anticipated Change Orders
+    // 13. 2.5% Anticipated Change Orders
     const K24 = 0.025;
     results.push({
-        item: "12.5% Anticipated Change Orders",
+        item: "2.5% Anticipated Change Orders",
         cost: K24 * K23 * J2
     });
 
