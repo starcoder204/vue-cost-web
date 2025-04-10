@@ -93,7 +93,7 @@ export default {
             this.$emit('calculate', params)
         },
         calculateCommission(totalCost) {
-            this.commissionAmount = formatCurrency(totalCost * this.commissionPercentage / 100);
+            this.commissionAmount = formatCurrency(this.totalAreaInput * this.costPerSqftInput * this.commissionPercentage / 100);
         }
     }
 }
