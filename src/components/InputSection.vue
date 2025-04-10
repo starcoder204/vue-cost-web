@@ -3,7 +3,7 @@
         <div v-if="this.$store.state.user.role === 'non-industry-sales'" class="md:flex font-bold justify-end">
             <h4 class="">Your Estimated Commission: </h4>
             <div class="font-bold text-vdc-secondary-color">
-                <span class="mx-2">.75%</span> <span>$37,500</span>
+                <span class="mx-2">{{commissionPercentage}}%</span> <span>{{commissionAmount}}</span>
             </div>
         </div>
         <h2>Enter your values:</h2>
@@ -48,7 +48,7 @@
 
 <script>
 import { validationConfig } from '../config/validationConfig';
-import { validateInput } from '../lib/utils';
+import { validateInput, formatCurrency } from '../lib/utils';
 export default {
     props: [ 'defaultCostPerSqftInput' ],
     data() {
@@ -58,10 +58,16 @@ export default {
             targetAppraisalInput: 1200,
             totalInsurancePayoutInput: 0,
             extendedInsuranceCoverageInput: 0,
+            commissionPercentage: 75,
+            commissionAmount: 0
         }
     },
     mounted() {
         this.calculate();
+        this.$nextTick(() => {
+            const metaData = this.$store.state.user.metadata;
+            this.commissionAmount = formatCurrency(metaData.totalCost * 75 / 100);
+        })
     },
     methods: {
         validateTotalAreaInput() {

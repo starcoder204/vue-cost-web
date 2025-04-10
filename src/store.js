@@ -11,8 +11,11 @@ export default new Vuex.Store({
         name: '',
         email: '',
         role: '',
-        isLoggedIn: false
-    }
+        isLoggedIn: false,
+        metadata: {
+          totalCost: 0
+        }
+    },
   },
   mutations: {
     setUser(state, userData) {
@@ -26,6 +29,9 @@ export default new Vuex.Store({
       state.user.email = '';
       state.user.role = '';
       state.user.isLoggedIn = false;
+    },
+    setTotalCost(state, payload) {
+      state.user.metadata.totalCost = payload
     }
   },
   actions: {
@@ -41,6 +47,9 @@ export default new Vuex.Store({
     },
     logout({ commit }) {
         commit('logoutUser');
-    }
+    },
+    save_total_code({ commit }, payload) {
+        commit('setTotalCost', payload)
+    },
   }
 });
