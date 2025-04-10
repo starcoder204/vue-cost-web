@@ -123,6 +123,9 @@ header p {
         font-size: 16px;
     }
 }
+#business-name {
+    border-color: var(--primary-color);
+}
 
 .form-grid {
     display: grid;
@@ -130,7 +133,7 @@ header p {
     gap: 1rem; /* space between inputs */
     .input-group {
         width: 100%;
-        box-sizing: border-box;
+        box-sizing: --primary-color;
     }
 }
 
