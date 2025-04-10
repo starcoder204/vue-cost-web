@@ -13,7 +13,7 @@
                             <div class="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
                                 <div class="p-4 md:p-5">
                                     <div class="flex items-center gap-x-2">
-                                    <p class="text-md text-gray-500 dark:text-neutral-500">
+                                    <p class="text-md text-gray-600 dark:text-neutral-500">
                                         Project Name
                                     </p>
                                     </div>
@@ -31,7 +31,7 @@
                             <div class="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
                                 <div class="p-4 md:p-5">
                                     <div class="flex items-center gap-x-2">
-                                        <p class="text-md text-gray-500 dark:text-neutral-500">
+                                        <p class="text-md text-gray-600 dark:text-neutral-500">
                                             Commissions
                                         </p>
                                     </div>
@@ -50,8 +50,8 @@
                             <div class="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
                                 <div class="p-4 md:p-5">
                                     <div class="flex items-center gap-x-2">
-                                    <p class="text-md text-gray-500 dark:text-neutral-500">
-                                        Escrow Payout Date
+                                    <p class="text-md text-gray-600 dark:text-neutral-500">
+                                        Escrow Payout Date <strong class="text-red-600">*</strong>
                                     </p>
                                     </div>
 
@@ -65,6 +65,9 @@
                             <!-- End Card -->
                         </div>
                         <!-- End Grid -->
+                        <div class="my-2">
+                            <strong class="text-red-600">*</strong>15-30 days after contract signed
+                        </div>
                     </div>
                 </div>
                 </div>
