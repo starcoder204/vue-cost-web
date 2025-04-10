@@ -58,7 +58,7 @@ export default {
             targetAppraisalInput: 1200,
             totalInsurancePayoutInput: 0,
             extendedInsuranceCoverageInput: 0,
-            commissionPercentage: 75,
+            commissionPercentage: 0.75,
             commissionAmount: 0
         }
     },
@@ -66,7 +66,7 @@ export default {
         this.calculate();
         this.$nextTick(() => {
             const metaData = this.$store.state.user.metadata;
-            this.commissionAmount = formatCurrency(metaData.totalCost * 75 / 100);
+            this.commissionAmount = formatCurrency(metaData.totalCost * this.commissionPercentage);
         })
     },
     methods: {

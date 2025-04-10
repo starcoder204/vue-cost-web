@@ -77,7 +77,7 @@ import { formatCurrency, formatDecimal } from './../lib/utils';
 export default {
     data() {
         return {
-            commissionPercentage: 75,
+            commissionPercentage: 0.75,
             commissionAmount: 0
         }
     },
@@ -86,9 +86,9 @@ export default {
         //     this.dismissExpiration()
         // })
         // this.$root.$emit('close_expiration_notification')
-        
+
         const metaData = this.$store.state.user.metadata;
-        this.commissionAmount = formatCurrency(metaData.totalCost * 75 / 100);
+        this.commissionAmount = formatCurrency(metaData.totalCost * this.commissionPercentage);
     }
 }
 </script>
