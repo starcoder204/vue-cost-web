@@ -88,7 +88,7 @@ export default {
         // this.$root.$emit('close_expiration_notification')
 
         const metaData = this.$store.state.user.metadata;
-        this.commissionAmount = formatCurrency(metaData.totalCost * this.commissionPercentage);
+        this.commissionAmount = formatCurrency(metaData.totalCost * this.commissionPercentage / 100);
     }
 }
 </script>

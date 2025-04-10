@@ -3,9 +3,9 @@
             <div class="header-title">
                 <h1>VDC Studio Wildfire Rebuilding Valuation App</h1>
             </div>
-            <nav class="top-menu" :class="{ 'logged': this.$store.state.user.isLoggedIn }">
+            <nav class="top-menu" :class="{ 'logged': this.$store.state.user.isLoggedIn, 'non-industry-sale-menu': isNonIndustrySale }">
                 <router-link to="/" :class="{ 'active': this.$route.name === 'Home'}">Home</router-link>
-                <router-link to="/spec-builder" v-if="this.$store.state.user.isLoggedIn">Spec Builder</router-link>
+                <router-link to="/spec-builder" v-if="this.$store.state.user.isLoggedIn && !isNonIndustrySale">Spec Builder</router-link>
                 <router-link to="/about">About Us</router-link>
                 <router-link to="/login" v-if="!this.$store.state.user.isLoggedIn">Login, Real Estate Investor</router-link>
                 <router-link to="/login-partner" v-if="!this.$store.state.user.isLoggedIn">Login, VDC + Partners</router-link>
@@ -19,6 +19,11 @@
 
 <script>
 export default {
+    computed: {
+        isNonIndustrySale() {
+            return this.$store.state.user.role === 'non-industry-sales'
+        }
+    },
     methods: {
         logoutClicked() {
             this.$store.dispatch('logout');
@@ -38,8 +43,8 @@ export default {
     grid-template-columns: repeat(4, auto);
     gap: 1rem;
     padding: 0.3rem;
-    &.logged {
-        grid-template-columns: repeat(5, auto);
+    &.non-industry-sale-menu {
+        grid-template-columns: repeat(3, auto);
     }
 }
 

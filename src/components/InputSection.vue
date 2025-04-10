@@ -66,7 +66,7 @@ export default {
         this.calculate();
         this.$nextTick(() => {
             const metaData = this.$store.state.user.metadata;
-            this.commissionAmount = formatCurrency(metaData.totalCost * this.commissionPercentage);
+            this.commissionAmount = formatCurrency(metaData.totalCost * this.commissionPercentage / 100);
         })
     },
     methods: {
