@@ -95,7 +95,7 @@ export default {
         this.totalInsurancePayoutAmout = this.inputsObj.totalInsurancePayoutInput;
         this.extendedInsuranceCoverageAmount = this.inputsObj.extendedInsuranceCoverageInput;
         this.$store.dispatch('save_total_code', this.actualTotal);
-        this.$root.$emit('calculate_commission', this.actualTotal);
+        this.$root.$emit('calculate_commission', totalHouseArea * costPerSqft);
     },
     calculateAndDisplayResults(params) {
         this.inputsObj = params;
