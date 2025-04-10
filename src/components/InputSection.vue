@@ -64,10 +64,13 @@ export default {
     },
     mounted() {
         this.calculate();
+        const self = this;
         this.$nextTick(() => {
-            const metaData = this.$store.state.user.metadata;
-            this.commissionAmount = formatCurrency(metaData.totalCost * this.commissionPercentage / 100);
-        })
+            self.calculateCommission(this.$store.state.user.metadata.totalCost);
+        });
+        this.$root.$on('calculate_commission', (totalCost) => {
+            self.calculateCommission(totalCost);
+        });
     },
     methods: {
         validateTotalAreaInput() {
@@ -88,6 +91,9 @@ export default {
                 extendedInsuranceCoverageInput: this.extendedInsuranceCoverageInput,
             }
             this.$emit('calculate', params)
+        },
+        calculateCommission(totalCost) {
+            this.commissionAmount = formatCurrency(totalCost * this.commissionPercentage / 100);
         }
     }
 }

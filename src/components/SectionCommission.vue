@@ -82,13 +82,15 @@ export default {
         }
     },
     mounted() {
-        // this.$root.$on('close_expiration_notification', (value) => {
-        //     this.dismissExpiration()
-        // })
-        // this.$root.$emit('close_expiration_notification')
-
-        const metaData = this.$store.state.user.metadata;
-        this.commissionAmount = formatCurrency(metaData.totalCost * this.commissionPercentage / 100);
+        this.$root.$on('calculate_commission', (totalCost) => {
+            this.calculateCommission(totalCost);
+        });
+        this.calculateCommission(this.$store.state.user.metadata.totalCost);
+    },
+    methods: {
+        calculateCommission(totalCost) {
+            this.commissionAmount = formatCurrency(totalCost * this.commissionPercentage / 100);
+        }
     }
 }
 </script>
