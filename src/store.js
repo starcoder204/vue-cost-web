@@ -10,6 +10,7 @@ export default new Vuex.Store({
     user: {
         name: '',
         email: '',
+        role: '',
         isLoggedIn: false
     }
   },
@@ -17,11 +18,13 @@ export default new Vuex.Store({
     setUser(state, userData) {
       state.user.name = userData.name;
       state.user.email = userData.email;
+      state.user.role = userData.role;
       state.user.isLoggedIn = userData.isLoggedIn;
     },
     logoutUser(state) {
       state.user.name = '';
       state.user.email = '';
+      state.user.role = '';
       state.user.isLoggedIn = false;
     }
   },
@@ -31,6 +34,7 @@ export default new Vuex.Store({
           commit('setUser', {
             name: userData.name,
             email: userData.email,
+            role: userData.role,
             isLoggedIn: true
           });
         }, 500);

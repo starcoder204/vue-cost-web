@@ -35,7 +35,8 @@ export default {
                     // Successful login
                     this.isLoading = false;
                     const user = userCredential.user;
-                    this.$store.dispatch('login', { name: user.displayName, email: user.email });
+                    const role = this.$route.path == '/login-partner' ? 'non-industry-sales' : 'normal';
+                    this.$store.dispatch('login', { name: user.displayName, email: user.email, role });
                     this.$router.push('/').catch(()=>{});
                 })
                 .catch((error) => {

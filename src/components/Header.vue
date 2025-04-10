@@ -8,6 +8,7 @@
                 <router-link to="/spec-builder" v-if="this.$store.state.user.isLoggedIn">Spec Builder</router-link>
                 <router-link to="/about">About Us</router-link>
                 <router-link to="/login" v-if="!this.$store.state.user.isLoggedIn">Login, Real Estate Investor</router-link>
+                <router-link to="/login-partner" v-if="!this.$store.state.user.isLoggedIn">Login, VDC + Partners</router-link>
                 <a href="javascript:void(0);" @click="logoutClicked()" v-if="this.$store.state.user.isLoggedIn">Logout</a>
             </nav>
             <p>
@@ -34,11 +35,11 @@ export default {
 
 .top-menu {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(4, auto);
     gap: 1rem;
     padding: 0.3rem;
     &.logged {
-        grid-template-columns: repeat(4, auto);
+        grid-template-columns: repeat(5, auto);
     }
 }
 
@@ -47,6 +48,7 @@ export default {
     color: white;
     font-size: 22px;
     text-align: center;
+    text-decoration: underline;
     &.router-link-exact-active {
         color: #ebc3c3;
     }

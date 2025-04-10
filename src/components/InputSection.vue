@@ -1,5 +1,11 @@
 <template>
     <section class="input-section">
+        <div v-if="this.$store.state.user.role === 'non-industry-sales'" class="md:flex font-bold justify-end">
+            <h4 class="">Your Estimated Commission: </h4>
+            <div class="font-bold text-vdc-secondary-color">
+                <span class="mx-2">.75%</span> <span>$37,500</span>
+            </div>
+        </div>
         <h2>Enter your values:</h2>
         <div class="form-grid">
             <div class="input-group">
