@@ -2,15 +2,19 @@
     <header>
             <div class="header-title">
                 <h1>VDC Studio Wildfire Rebuilding Valuation App</h1>
+                <div v-if="isLoggedIn" class="text-lg">
+                    <div v-if="fullName.trim() !== ''">Welcome, <span class="welcome-name">{{fullName}}</span></div>
+                    <div v-else>Welcome!</div>
+                </div>
             </div>
-            <nav class="top-menu" :class="{ 'logged': this.$store.state.user.isLoggedIn, 'non-industry-sale-menu': isNonIndustrySale }">
+            <nav class="top-menu" :class="{ 'logged': isLoggedIn, 'with-vdc-partner': isVDCPartner }">
                 <router-link to="/" :class="{ 'active': this.$route.name === 'Home'}">Home</router-link>
-                <router-link to="/spec-builder" v-if="this.$store.state.user.isLoggedIn && !isNonIndustrySale">Spec Builder</router-link>
+                <router-link to="/spec-builder" v-if="isLoggedIn && !isVDCPartner">Spec Builder</router-link>
                 <router-link to="/about">About Us</router-link>
-                <router-link to="/login" v-if="!this.$store.state.user.isLoggedIn">Login, Real Estate Investor</router-link>
-                <router-link to="/login-partner" v-if="!this.$store.state.user.isLoggedIn">Login, VDC + Partners</router-link>
-                <router-link to="/create" v-if="!this.$store.state.user.isLoggedIn">Register</router-link>
-                <a href="javascript:void(0);" @click="logoutClicked()" v-if="this.$store.state.user.isLoggedIn">Logout</a>
+                <router-link to="/account" v-if="isLoggedIn">My Account</router-link>
+                <router-link to="/login" v-if="!isLoggedIn">Login</router-link>
+                <router-link to="/create" v-if="!isLoggedIn">Register</router-link>
+                <a href="javascript:void(0);" @click="logoutClicked()" v-if="isLoggedIn">Logout</a>
             </nav>
             <p>
                 What we do best is 3D architetcure and design valuation analysis, with over 30 years of experience behind every analysis.
@@ -21,8 +25,14 @@
 <script>
 export default {
     computed: {
-        isNonIndustrySale() {
-            return this.$store.state.user.role === 'non-industry-sales'
+        isVDCPartner() {
+            return this.$store.state.user.userRole === 'vdc_partner'
+        },
+        isLoggedIn() {
+            return this.$store.state.user.uid
+        },
+        fullName() {
+            return this.$store.state.user.firstName + ' ' + this.$store.state.user.lastName
         }
     },
     methods: {
@@ -39,13 +49,20 @@ export default {
     text-align: center;
 }
 
+.welcome-name {
+    color: #b5f993;
+}
+
 .top-menu {
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(4, auto);
     gap: 1rem;
     padding: 0.3rem;
-    &.non-industry-sale-menu {
-        grid-template-columns: repeat(3, auto);
+    &.logged {
+        grid-template-columns: repeat(5, auto);
+    }
+    &.with-vdc-partner {
+        grid-template-columns: repeat(4, auto);
     }
 }
 
@@ -63,7 +80,7 @@ export default {
 /* Mobile */
 @media (max-width: 767px) {
     .top-menu {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         gap: 0;
     }
 

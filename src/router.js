@@ -6,6 +6,7 @@ import Login from './pages/Login.vue';
 import Create from './pages/Create.vue';
 import LoginPartner from './pages/LoginPartner.vue';
 import SpecBuilder from './pages/SpecBuilder.vue';
+import Account from './pages/Account.vue';
 
 Vue.use(Router);
 
@@ -41,6 +42,12 @@ export default new Router({
       path: '/spec-builder',
       name: 'SpecBuilder',
       component: SpecBuilder,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/account',
+      name: 'Account',
+      component: Account,
       meta: { requiresAuth: true }
     },
   ]

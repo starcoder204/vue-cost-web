@@ -3,7 +3,7 @@
         <div class="main-container">
             <SectionTop />
 
-            <SectionCommission v-if="this.$store.state.user.role === 'non-industry-sales'" />
+            <SectionCommission v-if="isVDCPartner" />
             
             <InputSection
                 :defaultCostPerSqftInput="1000"
@@ -65,10 +65,14 @@ export default {
         extendedInsuranceCoverageAmount: 0,
     }
   },
+  computed: {
+    isVDCPartner() {
+        return this.$store.state.user.userRole === 'vdc_partner'
+    }
+  },
   created() {
   },
   mounted() {
-    console.log(this.$store.state.user)
   },
   methods: {    
     watchHighlight(tabId) {

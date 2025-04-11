@@ -16,8 +16,9 @@
 </template>
 
 <script>
-import { auth } from './../lib/firebase';  // Assuming you export auth from firebase.js
+import { auth, db } from './../lib/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc, setDoc } from "firebase/firestore";
 export default {
     data() {
         return {
@@ -31,12 +32,39 @@ export default {
             if (this.email != '' || this.password != '') {
                 this.isLoading = true;
                 signInWithEmailAndPassword(auth, this.email, this.password)
-                .then((userCredential) => {
+                .then(async (userCredential) => {
                     // Successful login
-                    this.isLoading = false;
                     const user = userCredential.user;
-                    const role = this.$route.path == '/login-partner' ? 'non-industry-sales' : 'normal';
-                    this.$store.dispatch('login', { name: user.displayName, email: user.email, role });
+                    // Check Firestore profile
+                    const userDocRef = doc(db, "users", user.uid);
+                    const userDoc = await getDoc(userDocRef);
+                    let userObj = { email: this.email };
+                    if (!userDoc.exists()) {
+                        // Create a basic profile or prompt user to fill in
+                        userObj = {
+                            ...userObj,
+                            firstName: '',
+                            lastName: '',
+                            phoneNumber: '',
+                            userRole: 'homeowner'
+                        };
+                        await setDoc(userDocRef, {
+                            ...userObj,
+                            createdAt: new Date()
+                        });
+                    } else {
+                        const data = userDoc.data();
+                        userObj = {
+                            uid: user.uid,
+                            email: this.email,
+                            firstName: data.firstName,
+                            lastName: data.lastName,
+                            phoneNumber: data.phoneNumber,
+                            userRole: data.userRole
+                        };
+                    }
+                    await this.$store.dispatch('login', userObj);
+                    this.isLoading = false;
                     this.$router.push('/').catch(()=>{});
                 })
                 .catch((error) => {
@@ -51,18 +79,4 @@ export default {
 </script>
 
 <style scoped>
-.loading-overlay {
-  position: fixed; /* Positioning relative to the viewport */
-  top: 0;
-  left: 0;
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  display: flex;
-  align-items: center; /* Vertical centering */
-  justify-content: center; /* Horizontal centering */
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  color: white;
-  font-size: 20px;
-  z-index: 1000; /* Make sure it covers other content */
-}
 </style>
