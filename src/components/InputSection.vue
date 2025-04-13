@@ -1,5 +1,11 @@
 <template>
     <section class="input-section">
+        <div v-if="isShowCommission" class="md:flex font-bold justify-end">
+            <h4 class="">Your Estimated Commission: </h4>
+            <div class="font-bold text-vdc-secondary-color">
+                <span class="mx-2">{{commissionPercentage}}%</span> <span>{{commissionAmount}}</span>
+            </div>
+        </div>
         <h2>Enter your values:</h2>
         <div class="form-grid">
             <div class="input-group">
@@ -51,7 +57,18 @@ export default {
             costPerSqftInput: this.defaultCostPerSqftInput,
             targetAppraisalInput: 1200,
             totalInsurancePayoutInput: 0,
-            extendedInsuranceCoverageInput: 0
+            extendedInsuranceCoverageInput: 0,
+        }
+    },
+    computed: {
+        isShowCommission() {
+            return ['vdc_partner', 'spec_build_partnership', 'realtor'].includes(this.$store.state.user.userRole)
+        },
+        commissionPercentage() {
+            return this.$root.sharedData.commissionPercentage;
+        },
+        commissionAmount() {
+            return formatCurrency(this.totalAreaInput * this.costPerSqftInput * this.$root.sharedData.commissionPercentage / 100);
         }
     },
     mounted() {

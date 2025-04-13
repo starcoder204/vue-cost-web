@@ -4,12 +4,6 @@
                 <div class="text-center mb-5">
                 </div>
                 <SectionCommission :commissionPercentage="commissionPercentage" :commissionAmount="commissionAmount" />
-                <div class="md:flex font-bold">
-                    <h4 class="">Your Estimated Commission: </h4>
-                    <div class="font-bold text-vdc-secondary-color">
-                        <span class="mx-2">{{commissionPercentage}}%</span> <span>{{commissionAmount}}</span>
-                    </div>
-                </div>
             </div>
     </section>
 </template>
@@ -21,8 +15,8 @@ export default {
     components: { SectionCommission },
     data() {
         return {
-            commissionPercentage: 0.75,
-            commissionAmount: 0
+            commissionPercentage: this.$root.sharedData.commissionPercentage,
+            commissionAmount: null
         }
     },
     mounted() {

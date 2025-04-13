@@ -2,6 +2,9 @@ export const rolesArray = [{
     label: 'Homeowner, wanting VDC+Owner Rep for Owner Builder Services',
     value: 'homeowner'
 }, {
+    label: 'Homeowner, wanting only Insurance 3D Replacement Model for maximum payout',
+    value: 'homeowner_3d_replacement'
+}, {
     label: 'Product Supplier',
     value: 'product_supplier'
 }, {

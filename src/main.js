@@ -18,7 +18,8 @@ router.beforeEach((to, from, next) => {
 new Vue({
   data: {
     sharedData: {
-      totalCost: 0
+      commissionPercentage: 0.75,
+      totalCost: 5000000
     }
   },
   store,
