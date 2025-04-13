@@ -76,24 +76,7 @@
 </template>
 
 <script>
-import { formatCurrency, formatDecimal } from './../lib/utils';
 export default {
-    data() {
-        return {
-            commissionPercentage: 0.75,
-            commissionAmount: 0
-        }
-    },
-    mounted() {
-        this.$root.$on('calculate_commission', (totalCost) => {
-            this.calculateCommission(totalCost);
-        });
-        this.calculateCommission(this.$store.state.user.metadata.totalCost);
-    },
-    methods: {
-        calculateCommission(totalCost) {
-            this.commissionAmount = formatCurrency(totalCost * this.commissionPercentage / 100);
-        }
-    }
+    props: [ 'commissionPercentage', 'commissionAmount' ]
 }
 </script>

@@ -95,7 +95,7 @@ export default {
                 label: 'Select a role',
                 value: ''
             }, {
-                label: 'Homeowner, needing insurance recovery model',
+                label: 'Homeowner, wanting VDC+Owner Rep for Owner Builder Services',
                 value: 'homeowner'
             }, {
                 label: 'Product Supplier',

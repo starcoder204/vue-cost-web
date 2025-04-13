@@ -1,11 +1,5 @@
 <template>
     <section class="input-section">
-        <div v-if="this.$store.state.user.role === 'non-industry-sales'" class="md:flex font-bold justify-end">
-            <h4 class="">Your Estimated Commission: </h4>
-            <div class="font-bold text-vdc-secondary-color">
-                <span class="mx-2">{{commissionPercentage}}%</span> <span>{{commissionAmount}}</span>
-            </div>
-        </div>
         <h2>Enter your values:</h2>
         <div class="form-grid">
             <div class="input-group">
@@ -57,20 +51,11 @@ export default {
             costPerSqftInput: this.defaultCostPerSqftInput,
             targetAppraisalInput: 1200,
             totalInsurancePayoutInput: 0,
-            extendedInsuranceCoverageInput: 0,
-            commissionPercentage: 0.75,
-            commissionAmount: 0
+            extendedInsuranceCoverageInput: 0
         }
     },
     mounted() {
         this.calculate();
-        const self = this;
-        this.$nextTick(() => {
-            self.calculateCommission(this.$store.state.user.metadata.totalCost);
-        });
-        this.$root.$on('calculate_commission', (totalCost) => {
-            self.calculateCommission(totalCost);
-        });
     },
     methods: {
         validateTotalAreaInput() {
@@ -91,9 +76,6 @@ export default {
                 extendedInsuranceCoverageInput: this.extendedInsuranceCoverageInput,
             }
             this.$emit('calculate', params)
-        },
-        calculateCommission(totalCost) {
-            this.commissionAmount = formatCurrency(this.totalAreaInput * this.costPerSqftInput * this.commissionPercentage / 100);
         }
     }
 }

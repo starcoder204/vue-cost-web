@@ -9,6 +9,7 @@
             </div>
             <nav class="top-menu" :class="{ 'logged': isLoggedIn, 'with-vdc-partner': isVDCPartner }">
                 <router-link to="/" :class="{ 'active': this.$route.name === 'Home'}">Home</router-link>
+                <router-link to="/vdc-partner" v-if="isLoggedIn && isVDCPartner">VDC+Partner</router-link>
                 <router-link to="/spec-builder" v-if="isLoggedIn && !isVDCPartner">Spec Builder</router-link>
                 <router-link to="/about">About Us</router-link>
                 <router-link to="/account" v-if="isLoggedIn">My Account</router-link>
@@ -62,7 +63,7 @@ export default {
         grid-template-columns: repeat(5, auto);
     }
     &.with-vdc-partner {
-        grid-template-columns: repeat(4, auto);
+        grid-template-columns: repeat(5, auto);
     }
 }
 

@@ -2,8 +2,6 @@
     <div>
         <div class="main-container">
             <SectionTop />
-
-            <SectionCommission v-if="isVDCPartner" />
             
             <InputSection
                 :defaultCostPerSqftInput="1000"
@@ -30,7 +28,6 @@
 
 <script>
 import SectionTop from '../components/SectionTop.vue';
-import SectionCommission from '../components/SectionCommission.vue';
 import SectionDesc from '../components/SectionDesc.vue';
 import InputSection from '../components/InputSection.vue';
 import ResultSection from '../components/ResultSection.vue';
@@ -38,7 +35,7 @@ import RadioSection from '../components/RadioSection.vue';
 import ScrollToTop from '../components/ScrollToTop.vue';
 import { calculateGCWorkflow, calculateOwnerRepWorkflow, calculateSpecBuilderWorkflow } from '../lib/utils';
 export default {
-  components: { SectionTop, SectionDesc, InputSection, ResultSection, RadioSection, ScrollToTop, SectionCommission },
+  components: { SectionTop, SectionDesc, InputSection, ResultSection, RadioSection, ScrollToTop },
   name: 'Home',
   data() {
     return {
@@ -99,7 +96,7 @@ export default {
         this.totalInsurancePayoutAmout = this.inputsObj.totalInsurancePayoutInput;
         this.extendedInsuranceCoverageAmount = this.inputsObj.extendedInsuranceCoverageInput;
         this.$store.dispatch('save_total_code', this.actualTotal);
-        this.$root.$emit('calculate_commission', totalHouseArea * costPerSqft);
+        this.$root.sharedData = { totalCost: totalHouseArea * costPerSqft };
     },
     calculateAndDisplayResults(params) {
         this.inputsObj = params;

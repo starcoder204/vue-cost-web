@@ -16,6 +16,11 @@ router.beforeEach((to, from, next) => {
 
 
 new Vue({
+  data: {
+    sharedData: {
+      totalCost: 0
+    }
+  },
   store,
   router,
   render: function (h) { return h(App) },

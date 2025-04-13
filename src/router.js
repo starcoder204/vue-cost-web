@@ -4,9 +4,9 @@ import Home from './pages/Home.vue';
 import About from './pages/About.vue';
 import Login from './pages/Login.vue';
 import Create from './pages/Create.vue';
-import LoginPartner from './pages/LoginPartner.vue';
 import SpecBuilder from './pages/SpecBuilder.vue';
 import Account from './pages/Account.vue';
+import VDCPartner from './pages/VDCPartner.vue';
 
 Vue.use(Router);
 
@@ -29,11 +29,6 @@ export default new Router({
       component: Create
     },
     {
-      path: '/login-partner',
-      name: 'LoginPartner',
-      component: LoginPartner
-    },
-    {
       path: '/about',
       name: 'About',
       component: About
@@ -42,6 +37,12 @@ export default new Router({
       path: '/spec-builder',
       name: 'SpecBuilder',
       component: SpecBuilder,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/vdc-partner',
+      name: 'VDCPartner',
+      component: VDCPartner,
       meta: { requiresAuth: true }
     },
     {
