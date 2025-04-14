@@ -6,12 +6,14 @@
                     <div v-if="fullName.trim() !== ''">Welcome, <span class="welcome-name">{{fullName}}</span></div>
                     <div v-else>Welcome!</div>
                     &nbsp;&nbsp;
-                    (<a href="javascript:void(0);" @click="logoutClicked()" v-if="isLoggedIn" class="underline">Sign Out</a>)
+                    (<a href="javascript:void(0);" @click="logoutClicked()" v-if="isLoggedIn" class="underline">
+                        Sign Out
+                    </a>)
                 </div>
             </div>
             <nav class="top-menu" :class="{ 'logged': isLoggedIn, 'with-5-pages': isShowSpecBuilderPage }">
                 <router-link to="/" :class="{ 'active': this.$route.name === 'Home'}">Home</router-link>
-                <router-link to="/vdc-partner" v-if="isLoggedIn && isShowEscrowPage">Escrow</router-link>
+                <router-link to="/escrow" v-if="isLoggedIn && isShowEscrowPage">Escrow</router-link>
                 <router-link to="/spec-builder" v-if="isLoggedIn && isShowSpecBuilderPage">Spec Builder</router-link>
                 <router-link to="/about">About Us</router-link>
                 <router-link to="/account" v-if="isLoggedIn">My Account</router-link>

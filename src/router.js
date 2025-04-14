@@ -40,7 +40,7 @@ export default new Router({
       meta: { requiresAuth: true }
     },
     {
-      path: '/vdc-partner',
+      path: '/escrow',
       name: 'VDCPartner',
       component: VDCPartner,
       meta: { requiresAuth: true }
