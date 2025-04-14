@@ -2,20 +2,21 @@
     <header>
             <div class="header-title">
                 <h1>VDC Studio Wildfire Rebuilding Valuation App</h1>
-                <div v-if="isLoggedIn" class="text-lg">
+                <div v-if="isLoggedIn" class="text-lg flex justify-center">
                     <div v-if="fullName.trim() !== ''">Welcome, <span class="welcome-name">{{fullName}}</span></div>
                     <div v-else>Welcome!</div>
+                    &nbsp;&nbsp;
+                    (<a href="javascript:void(0);" @click="logoutClicked()" v-if="isLoggedIn" class="underline">Sign Out</a>)
                 </div>
             </div>
-            <nav class="top-menu" :class="{ 'logged': isLoggedIn, 'with-vdc-partner': isVDCPartner }">
+            <nav class="top-menu" :class="{ 'logged': isLoggedIn, 'with-5-pages': isShowSpecBuilderPage }">
                 <router-link to="/" :class="{ 'active': this.$route.name === 'Home'}">Home</router-link>
-                <router-link to="/vdc-partner" v-if="isLoggedIn && isVDCPartner">VDC+Partner</router-link>
-                <router-link to="/spec-builder" v-if="isLoggedIn && !isVDCPartner">Spec Builder</router-link>
+                <router-link to="/vdc-partner" v-if="isLoggedIn && isShowEscrowPage">Escrow</router-link>
+                <router-link to="/spec-builder" v-if="isLoggedIn && isShowSpecBuilderPage">Spec Builder</router-link>
                 <router-link to="/about">About Us</router-link>
                 <router-link to="/account" v-if="isLoggedIn">My Account</router-link>
                 <router-link to="/login" v-if="!isLoggedIn">Login</router-link>
                 <router-link to="/create" v-if="!isLoggedIn">Register</router-link>
-                <a href="javascript:void(0);" @click="logoutClicked()" v-if="isLoggedIn">Logout</a>
             </nav>
             <p>
                 What we do best is 3D architetcure and design valuation analysis, with over 30 years of experience behind every analysis.
@@ -26,8 +27,11 @@
 <script>
 export default {
     computed: {
-        isVDCPartner() {
-            return this.$store.state.user.userRole === 'vdc_partner'
+        isShowEscrowPage() {
+            return ['product_supplier', 'subcontrator', 'vdc_partner', 'spec_build_partnership', 'realtor'].includes(this.$store.state.user.userRole)
+        },
+        isShowSpecBuilderPage() {
+            return ['spec_build_partnership', 'realtor'].includes(this.$store.state.user.userRole)
         },
         isLoggedIn() {
             return this.$store.state.user.uid
@@ -60,9 +64,9 @@ export default {
     gap: 1rem;
     padding: 0.3rem;
     &.logged {
-        grid-template-columns: repeat(5, auto);
+        grid-template-columns: repeat(4, auto);
     }
-    &.with-vdc-partner {
+    &.with-5-pages {
         grid-template-columns: repeat(5, auto);
     }
 }
