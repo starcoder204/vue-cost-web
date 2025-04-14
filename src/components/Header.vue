@@ -11,7 +11,7 @@
                     </a>)
                 </div>
             </div>
-            <nav class="top-menu" :class="{ 'logged': isLoggedIn, 'with-5-pages': isShowSpecBuilderPage }">
+            <nav class="top-menu" :class="{ 'logged': isLoggedIn, 'with-4-pages':is4Pages,  'with-5-pages': isShowSpecBuilderPage }">
                 <router-link to="/" :class="{ 'active': this.$route.name === 'Home'}">Home</router-link>
                 <router-link to="/spec-builder" v-if="isLoggedIn && isShowSpecBuilderPage">Spec Builder</router-link>
                 <router-link to="/escrow" v-if="isLoggedIn && isShowEscrowPage">Escrow</router-link>
@@ -34,6 +34,9 @@ export default {
         },
         isShowSpecBuilderPage() {
             return ['spec_build_partnership', 'realtor'].includes(this.$store.state.user.userRole)
+        },
+        is4Pages() {
+            return ['product_supplier', 'subcontrator', 'vdc_partner'].includes(this.$store.state.user.userRole)
         },
         isLoggedIn() {
             return this.$store.state.user.uid
@@ -66,6 +69,9 @@ export default {
     gap: 1rem;
     padding: 0.3rem;
     &.logged {
+        grid-template-columns: repeat(3, auto);
+    }
+    &.with-4-pages {
         grid-template-columns: repeat(4, auto);
     }
     &.with-5-pages {
