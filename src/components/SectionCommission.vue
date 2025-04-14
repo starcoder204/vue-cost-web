@@ -65,9 +65,9 @@
                             <!-- End Card -->
                         </div>
                         <!-- End Grid -->
-                        <!-- <div class="my-2">
+                        <div class="my-2">
                             <strong class="text-red-600">*</strong>15-30 days after contract signed
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 </div>
