@@ -5,6 +5,7 @@ import About from './pages/About.vue';
 import Login from './pages/Login.vue';
 import Create from './pages/Create.vue';
 import SpecBuilder from './pages/SpecBuilder.vue';
+import Referral from './pages/Referral.vue';
 import Account from './pages/Account.vue';
 import VDCPartner from './pages/VDCPartner.vue';
 
@@ -49,6 +50,12 @@ export default new Router({
       path: '/account',
       name: 'Account',
       component: Account,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/referral',
+      name: 'Referral',
+      component: Referral,
       meta: { requiresAuth: true }
     },
   ]

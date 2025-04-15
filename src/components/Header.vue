@@ -11,11 +11,12 @@
                     </a>)
                 </div>
             </div>
-            <nav class="top-menu" :class="{ 'logged': isLoggedIn, 'with-4-pages':is4Pages,  'with-5-pages': isShowSpecBuilderPage }">
+            <nav class="top-menu" :class="{ 'logged': isLoggedIn, 'with-5-pages':is5Pages,  'with-6-pages': isShowSpecBuilderPage }">
                 <router-link to="/" :class="{ 'active': this.$route.name === 'Home'}">Home</router-link>
                 <router-link to="/spec-builder" v-if="isLoggedIn && isShowSpecBuilderPage">Spec Builder</router-link>
                 <router-link to="/escrow" v-if="isLoggedIn && isShowEscrowPage">Escrow</router-link>
                 <router-link to="/about">About Us</router-link>
+                <router-link to="/referral" v-if="isLoggedIn">Referral</router-link>
                 <router-link to="/account" v-if="isLoggedIn">My Account</router-link>
                 <router-link to="/login" v-if="!isLoggedIn">Login</router-link>
                 <router-link to="/create" v-if="!isLoggedIn">Register</router-link>
@@ -35,7 +36,7 @@ export default {
         isShowSpecBuilderPage() {
             return ['spec_build_partnership', 'realtor'].includes(this.$store.state.user.userRole)
         },
-        is4Pages() {
+        is5Pages() {
             return ['product_supplier', 'subcontrator', 'vdc_partner'].includes(this.$store.state.user.userRole)
         },
         isLoggedIn() {
@@ -76,6 +77,9 @@ export default {
     }
     &.with-5-pages {
         grid-template-columns: repeat(5, auto);
+    }
+    &.with-6-pages {
+        grid-template-columns: repeat(6, auto);
     }
 }
 
