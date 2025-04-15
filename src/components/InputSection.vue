@@ -24,7 +24,7 @@
                     placeholder="Enter area..." min="0" value="1200">
             </div>
             <div class="input-group">
-                <label>Total Insurance Recovery Payout</label>
+                <label>Guaranteed Insurance Recovery Payout*</label>
                 <input type="number" v-model="totalInsurancePayoutInput" placeholder="Enter cost..." min="0"
                     value="0">
             </div>

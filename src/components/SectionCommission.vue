@@ -4,7 +4,7 @@
                 <div class="grow p-4 ms-32 sm:ms-48">
                 <div class="min-h-24 flex flex-col justify-center">
                     <h3 class="font-semibold text-gray-800 dark:text-neutral-300">
-                        Your Commissions Escrow Status
+                        Example, Your Commissions Escrow Status will be tracked on the escrow page.
                     </h3>
                     <div class="px-2 py-4 sm:px-6 lg:px-4 lg:py-6 mx-auto">
                         <!-- Grid -->
