@@ -63,9 +63,6 @@ export default {
     }
   },
   computed: {
-    isVDCPartner() {
-        return this.$store.state.user.userRole === 'vdc_partner'
-    }
   },
   created() {
   },

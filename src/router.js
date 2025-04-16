@@ -7,7 +7,7 @@ import Create from './pages/Create.vue';
 import SpecBuilder from './pages/SpecBuilder.vue';
 import Referral from './pages/Referral.vue';
 import Account from './pages/Account.vue';
-import VDCPartner from './pages/VDCPartner.vue';
+import Escrow from './pages/Escrow.vue';
 
 Vue.use(Router);
 
@@ -42,8 +42,8 @@ export default new Router({
     },
     {
       path: '/escrow',
-      name: 'VDCPartner',
-      component: VDCPartner,
+      name: 'Escrow',
+      component: Escrow,
       meta: { requiresAuth: true }
     },
     {
