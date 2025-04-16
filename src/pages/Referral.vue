@@ -28,7 +28,7 @@
                 </div>
             </div>
 
-            <form hanldeSubmit>
+            <form @submit.prevent="hanldeSubmit">
                 <div class="grid gap-3 lg:gap-3">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
                         <div class="input-group">
@@ -73,16 +73,17 @@
                                 option.name }}</option>
                         </select>
                     </div>
-                    
+                </div>
+
+                <div class="mt-5 flex justify-center gap-x-2">
+                    <button type="submit"
+                        class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-md font-medium rounded-lg border border-transparent bg-blue-600 text-white focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                        Submit Referral
+                    </button>
                 </div>
             </form>
 
-            <div class="mt-5 flex justify-center gap-x-2">
-                <button type="button" @click="hanldeSubmit"
-                    class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-md font-medium rounded-lg border border-transparent bg-blue-600 text-white focus:outline-hidden focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
-                    Submit Referral
-                </button>
-            </div>
+            
         </div>
         
 
@@ -133,12 +134,13 @@
                 <div class="my-6 grid gap-y-2">
                     <button
                     type="button"
+                    @click="showModal = false"
                     class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-md font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700"
                     >
                     Submit a New Referral
                     </button>
 
-                    <button type="button" class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-md font-medium rounded-lg border border-gray-200 bg-gray-200 text-gray-800 shadow-2xs hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
+                    <button type="button" @click="showModal = false" class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-md font-medium rounded-lg border border-gray-200 bg-gray-200 text-gray-800 shadow-2xs hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
                         Go to Referrals
                     </button>
                     
@@ -152,7 +154,7 @@
 
 <script>
 import { db, auth } from './../lib/firebase';
-import { doc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc, collection, addDoc } from "firebase/firestore";
 import { serviceTypesArray } from '../config/serviceTypesConfig';
 import { countries } from '../config/locations';
 export default {
@@ -179,8 +181,27 @@ export default {
     },
     methods: {
         async hanldeSubmit() {
-            this.showModal = true
             if (!this.referralName || !this.projectName || !this.referralEmail || !this.serviceType || !this.location) return;
+            this.isLoading = true;
+            try {
+                const referralObj = {
+                    referralName: this.referralName,
+                    projectName: this.projectName,
+                    referralEmail: this.referralEmail,
+                    serviceType: this.serviceType,
+                    location: countries.find(e => e.id == this.location)
+                }
+                const docRef = await addDoc(collection(db, "referrals"), {
+                    ...referralObj,
+                    createdAt: new Date(),
+                });
+                console.log("Document written with ID: ", docRef.id);
+                this.showModal = true;
+                this.isLoading = false;
+            } catch (e) {
+                console.error("Error adding document: ", e);
+                this.isLoading = false;
+            }
         }
     }
 }
