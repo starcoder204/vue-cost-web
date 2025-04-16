@@ -62,7 +62,7 @@
                             :id="'option-' + option.value"
                             :value="option.value"
                             v-model="referralTypes"
-                            class="w-[1rem] h-[1rem] text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                            class="w-[18px] h-[18px] text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
                         />
                         <label
                             :for="'option-' + option.value"
