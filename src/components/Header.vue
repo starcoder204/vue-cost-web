@@ -16,7 +16,7 @@
                 <router-link to="/spec-builder" v-if="isLoggedIn && isShowSpecBuilderPage">Spec Builder</router-link>
                 <router-link to="/escrow" v-if="isLoggedIn && isShowEscrowPage">Escrow</router-link>
                 <router-link to="/about">About Us</router-link>
-                <router-link to="/referral" v-if="isLoggedIn">Referral</router-link>
+                <router-link to="/referral" v-if="isLoggedIn && isShowReferralPage">Referral</router-link>
                 <router-link to="/account" v-if="isLoggedIn">My Account</router-link>
                 <router-link to="/login" v-if="!isLoggedIn">Login</router-link>
                 <router-link to="/create" v-if="!isLoggedIn">Register</router-link>
@@ -30,6 +30,9 @@
 <script>
 export default {
     computed: {
+        isShowReferralPage() {
+            return !['homeowner', 'homeowner_3d_replacement'].includes(this.$store.state.user.userRole)
+        },
         isShowEscrowPage() {
             return ['product_supplier', 'subcontrator', 'vdc_partner', 'spec_build_partnership', 'realtor'].includes(this.$store.state.user.userRole)
         },
