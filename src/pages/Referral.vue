@@ -54,15 +54,33 @@
                             name="hs-lastname-hire-us-2" id="hs-lastname-hire-us-2"
                             class="py-2.5 sm:py-3 px-4 block w-full border-gray-200 rounded-lg sm:focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                     </div>
+                    
+                    <label class="block text-gray-700 font-medium dark:text-white">Referral Type</label>
+                    <div v-for="option in referralTypesOptions" :key="option.value" class="flex items-center">
+                        <input
+                            type="checkbox"
+                            :id="'option-' + option.value"
+                            :value="option.value"
+                            v-model="referralTypes"
+                            class="w-[1rem] h-[1rem] text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                        />
+                        <label
+                            :for="'option-' + option.value"
+                            class="ml-3 text-sm text-gray-700"
+                        >
+                        {{ option.label }}
+                        </label>
+                    </div>
+                    
 
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <label for="serviceType" class="block mb-1 text-gray-700 font-medium dark:text-white">Service Type</label>
                         <select id="serviceType" v-model="serviceType" required
                             class="py-1.5 sm:py-2 px-3 pe-9 block w-full border-gray-200 shadow-2xs rounded-lg sm:focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                             <option v-for="(option, index) in serviceTypesOptions" :key="index" :value="option.value">{{
                                 option.label }}</option>
                         </select>
-                    </div>
+                    </div> -->
                     
 
                     <div class="input-group">
@@ -157,6 +175,7 @@ import { db, auth } from './../lib/firebase';
 import { doc, updateDoc, collection, addDoc } from "firebase/firestore";
 import { serviceTypesArray } from '../config/serviceTypesConfig';
 import { countries } from '../config/locations';
+import { referralTypesArray } from '../config/referralTypesConfig';
 export default {
     name: 'Referral',
     data() {
@@ -164,11 +183,13 @@ export default {
             referralName: '',
             projectName: '',
             referralEmail: '',
-            serviceType: '',
-            serviceTypesOptions: [{
-                label: 'Select a role',
-                value: ''
-            }, ...serviceTypesArray],
+            // serviceType: '',
+            // serviceTypesOptions: [{
+            //     label: 'Select a role',
+            //     value: ''
+            // }, ...serviceTypesArray],
+            referralTypes: [],
+            referralTypesOptions: referralTypesArray,
             location: 840,
             locationOptions: countries,
             showModal: false,
@@ -181,14 +202,14 @@ export default {
     },
     methods: {
         async hanldeSubmit() {
-            if (!this.referralName || !this.projectName || !this.referralEmail || !this.serviceType || !this.location) return;
+            if (!this.referralName || !this.projectName || !this.referralEmail || !this.referralTypes.length || !this.location) return;
             this.isLoading = true;
             try {
                 const referralObj = {
                     referralName: this.referralName,
                     projectName: this.projectName,
                     referralEmail: this.referralEmail,
-                    serviceType: this.serviceType,
+                    referralTypes: this.referralTypes,
                     location: countries.find(e => e.id == this.location)
                 }
                 const docRef = await addDoc(collection(db, "referrals"), {

@@ -7,7 +7,6 @@
                 <tr>
                     <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Name</th>
                     <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Email</th>
-                    <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Service Type</th>
                     <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Project Name</th>
                     <th class="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Location</th>
                 </tr>
@@ -16,7 +15,6 @@
                 <tr v-for="(referral, index) in referrals" :key="index">
                     <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ referral.referralName }}</td>
                     <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ referral.referralEmail }}</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ referral.serviceType }}</td>
                     <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ referral.projectName }}</td>
                     <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ referral.location.name }}</td>
                 </tr>
