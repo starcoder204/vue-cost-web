@@ -35,7 +35,7 @@ export default {
     },
     async created() {
         try {
-            const snapshot = await db.collection('referrals').get()
+            const snapshot = await db.collection('referrals').where('referralEmail', '==', this.$store.state.user.email).get()
             this.referrals = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
         } catch (error) {
             console.error('Error fetching documents:', error)

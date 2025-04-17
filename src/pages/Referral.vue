@@ -179,6 +179,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { db, auth } from './../lib/firebase';
 import { doc, updateDoc, collection, addDoc } from "firebase/firestore";
 import { serviceTypesArray } from '../config/serviceTypesConfig';
@@ -226,11 +227,28 @@ export default {
                     createdAt: new Date(),
                 });
                 console.log("Document written with ID: ", docRef.id);
+                await this.sendEmail();
                 this.showModal = true;
                 this.isLoading = false;
             } catch (e) {
                 console.error("Error adding document: ", e);
                 this.isLoading = false;
+            }
+        },
+        async sendEmail() {
+            const subject = 'Referral';
+            const text = `A referral was submitted by ${this.referralName}. (${this.referralEmail})`
+            try {
+                const response = await axios.post('https://sendemail-t6e3vsm3gq-uc.a.run.app/sendEmail', {
+                    to: 'lwelli77777@gmail.com',
+                    subject: subject,
+                    text: text
+                });
+
+                console.log('✅ Email sent: ' + response.data);
+            } catch (error) {
+                console.error('❌ Error sending email:', error);
+                console.log('Error sending email: ' + (error.response?.data || error.message));
             }
         }
     }

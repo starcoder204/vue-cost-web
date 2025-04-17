@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "autoprefixer": "^9.8.8",
+    "axios": "^1.8.4",
     "firebase": "^11.6.0",
     "lodash": "^4.17.21",
     "postcss": "^7.0.39",
