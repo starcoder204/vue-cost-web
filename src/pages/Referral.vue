@@ -250,7 +250,7 @@ export default {
                 + `Refered by ${this.$store.state.user.email}`
             try {
                 const response = await axios.post('https://sendemail-t6e3vsm3gq-uc.a.run.app/sendEmail', {
-                    to: 'lwelli77777@gmail.com',
+                    to: 'ticket@vdc-bim.team',
                     subject: subject,
                     text: text
                 });
