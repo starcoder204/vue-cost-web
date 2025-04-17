@@ -221,6 +221,7 @@ export default {
                     referralEmail: this.referralEmail,
                     referralTypes: this.referralTypes,
                     address: this.address,
+                    createdBy: this.$store.state.user.email
                 }
                 const docRef = await addDoc(collection(db, "referrals"), {
                     ...referralObj,
