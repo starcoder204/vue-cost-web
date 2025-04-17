@@ -160,13 +160,13 @@
                 <div class="my-6 grid gap-y-2">
                     <button
                     type="button"
-                    @click="showModal = false"
+                    @click="handleNewReferral()"
                     class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-md font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700"
                     >
                     Submit a New Referral
                     </button>
 
-                    <button type="button" @click="showModal = false" class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-md font-medium rounded-lg border border-gray-200 bg-gray-200 text-gray-800 shadow-2xs hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
+                    <button type="button" @click="handleGoReferrals()" class="py-2.5 px-4 w-full inline-flex justify-center items-center gap-x-2 text-md font-medium rounded-lg border border-gray-200 bg-gray-200 text-gray-800 shadow-2xs hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none focus:outline-hidden focus:bg-gray-50 dark:bg-transparent dark:border-neutral-700 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
                         Go to Referrals
                     </button>
                     
@@ -238,7 +238,16 @@ export default {
         },
         async sendEmail() {
             const subject = 'Referral';
-            const text = `A referral was submitted by ${this.referralName}. (${this.referralEmail})`
+            const referralTypesTextArray = this.referralTypes.map(value => {
+                return this.referralTypesOptions[this.referralTypesOptions.findIndex(e => e.value == value)].label
+            })
+            console.log(referralTypesTextArray)
+            const text = `A referral was submitted by ${this.referralName}\n`
+                + `Referral Email: ${this.referralEmail}\n`
+                + `Project Name: ${this.projectName}\n`
+                + `Address: ${this.address}\n`
+                + `Referral Type: ${referralTypesTextArray.join(',')}\n`
+                + `Refered by ${this.$store.state.user.email}`
             try {
                 const response = await axios.post('https://sendemail-t6e3vsm3gq-uc.a.run.app/sendEmail', {
                     to: 'lwelli77777@gmail.com',
@@ -251,6 +260,18 @@ export default {
                 console.error('❌ Error sending email:', error);
                 console.log('Error sending email: ' + (error.response?.data || error.message));
             }
+        },
+        handleNewReferral() {
+            this.referralName = ''
+            this.referralEmail = ''
+            this.address = ''
+            this.referralTypes = []
+            this.projectName = ''
+            this.showModal = false
+        },
+        handleGoReferrals() {
+            this.showModal = false
+            this.$router.push('/escrow').catch(()=>{});
         }
     }
 }
