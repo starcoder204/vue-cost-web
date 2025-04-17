@@ -246,7 +246,7 @@ export default {
                 + `Referral Email: ${this.referralEmail}\n`
                 + `Project Name: ${this.projectName}\n`
                 + `Address: ${this.address}\n`
-                + `Referral Type: ${referralTypesTextArray.join(',')}\n`
+                + `Referral Type: ${referralTypesTextArray.join(';')}\n`
                 + `Refered by ${this.$store.state.user.email}`
             try {
                 const response = await axios.post('https://sendemail-t6e3vsm3gq-uc.a.run.app/sendEmail', {
