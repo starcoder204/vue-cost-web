@@ -16,7 +16,7 @@
                     <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ referral.referralName }}</td>
                     <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ referral.referralEmail }}</td>
                     <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ referral.projectName }}</td>
-                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ referral.location.name }}</td>
+                    <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-700">{{ referral.location?.name || referral.address || '' }}</td>
                 </tr>
                 </tbody>
             </table>
