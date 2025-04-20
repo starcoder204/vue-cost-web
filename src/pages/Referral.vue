@@ -241,7 +241,6 @@ export default {
             const referralTypesTextArray = this.referralTypes.map(value => {
                 return this.referralTypesOptions[this.referralTypesOptions.findIndex(e => e.value == value)].label
             })
-            console.log(referralTypesTextArray)
             const text = `A referral was submitted by ${this.referralName}\n`
                 + `Referral Email: ${this.referralEmail}\n`
                 + `Project Name: ${this.projectName}\n`
@@ -250,7 +249,8 @@ export default {
                 + `Refered by ${this.$store.state.user.email}`
             try {
                 const response = await axios.post('https://sendemail-t6e3vsm3gq-uc.a.run.app/sendEmail', {
-                    to: 'ticket@vdc-bim.team',
+                    to: this.referralEmail,
+                    cc: 'ticket@vdc-bim.team',
                     subject: subject,
                     text: text
                 });
