@@ -42,7 +42,9 @@
                         <li v-for="(item, index) in tabObj[key].result.lineItems" :key="index">
                             <span>{{`${index + 1}. ${item.item}`}}</span>
                             <!-- <span :class="item.cost < 0 ? 'negative' : 'zero'">{{item.cost == 0 ? item.cost_display : -->
-                            <span :class="item.cost < 0 ? 'negative' : 'zero'">{{item.cost_display || (isHomeowner ? 'No Access' : formatCurrency(item.cost))}}</span>
+                            <span :class="item.cost < 0 ? 'negative' : 'zero'">
+                                {{isHomeowner && (key === 'owner_rep' && noAccessItems_OwnerRep.includes(index+1) || key === 'gc' && noAccessItems_Traditional.includes(index+1)) ? 'No Access' : item.cost_display || formatCurrency(item.cost)}}
+                            </span>
                         </li>
                     </ul>
                     <div class="totals">
@@ -92,6 +94,12 @@ export default {
         },
         isHomeowner() {
             return ['homeowner', 'homeowner_3d_replacement'].includes(this.$store.state.user.userRole)
+        },
+        noAccessItems_OwnerRep() {
+            return [1,3,4,6,7,9,10,12,13,14]
+        },
+        noAccessItems_Traditional() {
+            return [2,6,7,9,10,12,13]
         },
     },
     methods: {
