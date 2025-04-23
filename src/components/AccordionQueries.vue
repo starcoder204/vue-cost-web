@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-3xl mx-auto">
+    <div class="max-w-4xl mx-auto">
       <div
         v-for="(section, index) in sections"
         :key="index"
@@ -36,7 +36,7 @@
   
         <div
           v-show="activeIndex === index"
-          class="px-4 py-3 bg-white text-gray-700"
+          class="px-8 py-4 bg-white text-gray-700"
         >
           <p v-html="section.content" class="space-y-2"></p>
         </div>

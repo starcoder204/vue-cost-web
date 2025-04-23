@@ -4,6 +4,7 @@
             <SectionTop />
             
             <section class="section">
+                <h3 class="text-black py-3">We answer these questions for you after a wildfire takes a property.</h3>
                 <AccordionQueries />
             </section>
             
