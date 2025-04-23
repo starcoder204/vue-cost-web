@@ -42,8 +42,7 @@
                         <li v-for="(item, index) in tabObj[key].result.lineItems" :key="index">
                             <span>{{`${index + 1}. ${item.item}`}}</span>
                             <!-- <span :class="item.cost < 0 ? 'negative' : 'zero'">{{item.cost == 0 ? item.cost_display : -->
-                            <span :class="item.cost < 0 ? 'negative' : 'zero'">{{item.cost_display ? item.cost_display :
-                                formatCurrency(item.cost)}}</span>
+                            <span :class="item.cost < 0 ? 'negative' : 'zero'">{{item.cost_display || (isHomeowner ? 'No Access' : formatCurrency(item.cost))}}</span>
                         </li>
                     </ul>
                     <div class="totals">
@@ -86,6 +85,14 @@ export default {
         return {
             actTab: this.activeTab,
         }
+    },
+    computed: {
+        isLoggedIn() {
+            return this.$store.state.user.uid
+        },
+        isHomeowner() {
+            return ['homeowner', 'homeowner_3d_replacement'].includes(this.$store.state.user.userRole)
+        },
     },
     methods: {
         formatCurrency(amount) {
