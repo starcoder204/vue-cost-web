@@ -99,7 +99,7 @@ export default {
             return [1,3,4,6,7,9,10,12,13,14]
         },
         noAccessItems_Traditional() {
-            return [2,6,7,9,10,12,13]
+            return [1,3,4,6,7,9,10,12,13]
         },
     },
     methods: {
