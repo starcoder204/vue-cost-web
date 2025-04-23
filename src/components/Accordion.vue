@@ -54,18 +54,18 @@
           {
             title: '1. Traditional General Contractor & Architect',
             content: `Wood Structures and non fireproof construction<br>
-                      <a href="#" class="text-blue-600 underline">Most likely to produce negative property equity</a><br>
+                      <a href="javascript:void(0)" class="underline">Most likely to produce negative property equity</a><br>
                       Compare industry-standard costs for conventional wood-frame rebuilding with our innovative, fire-resistant ICF (Insulated Concrete Form) construction. While wood remains common, our method prioritizes safety and durability in wildfire-prone areas.`,
           },
           {
             title: '2. VDC+Owner Rep Design-Build Contract',
-            content: `<a href="#" class="text-blue-600 underline">Produces high positive property equity</a><br>
+            content: `<a href="javascript:void(0)" class="underline">Produces high positive property equity</a><br>
                       Our recommended solution combines efficiency, cost savings, and premium quality for maximum property valuation. By eliminating general contractor overhead, we reinvest those funds into higher-grade materials and advanced planning tools like 3D virtual modeling. This approach reduces unexpected costs by up to 80% compared to traditional methods, while providing 24/7 remote site monitoring and expert guidance.`,
           },
           {
             title: '3. Spec Builder or First-Time Builder Partnerships',
             content: `VDC+Teams has over 35 yrs of experience creating <br>
-                      <a href="#" class="text-blue-600 underline">maximum property valuations and profits</a><br>
+                      <a href="javascript:void(0)" class="underline">maximum property valuations and profits</a><br>
                       New to construction? We partner with aspiring developers through limited-term agreements, hiring the most experienced local site superintendents and subcontractors. We will handle all architecture, engineering, material procurement and all construction documents needed for permits. Whether it’s your first project or you’re expanding your portfolio, we create tailored packages that mitigate risk and streamline compliance.`,
           }
         ]
