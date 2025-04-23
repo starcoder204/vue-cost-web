@@ -1,6 +1,6 @@
 <template>
     <section class="section">
-            <div class="bg-white rounded-xl shadow-xs p-4 sm:p-7 dark:bg-neutral-900">
+            <div class="bg-white rounded-xl shadow-xs md:p-4 sm:p-1 dark:bg-neutral-900">
                 <div class="text-left mb-5 text-lg font-bold">
                     <h4>Two Types Of Referrals</h4>
                     <div>1. Projects</div>
