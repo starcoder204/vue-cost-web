@@ -59,21 +59,21 @@
                       3. 12 Foot Ceilings, Max Glass-High End Package 12 Foot floor to ceiling Doors and Windows headers to the ceiling 
                         ( $1000 SF ) `
           },
-        //   {
-        //     title: 'What is a “ Structural Shell Package “?',
-        //     content: `The Structural Shell Package is our ICCF-ICF preapproved house design for Los Angeles wildfire rebuilding. The shell is the structure built ready for close inspection. This is what is includes
-        //                 1. Foundation, waterproofed <br>
-        //                 2. ICCF-ICF Exterior Walls poured to the roof <br>
-        //                 3. All exterior doors and windows installed <br>
-        //                 4. Roof is waterproof <br>
-        //                 5. Temporary safety rails at exterior decks and roof. <br>
-        //                 <br>
-        //                 Shell contract is 100% complete. The project is ready for the next wave of construction by others.
-        //                 By others, the home is ready for interior walls, <br>
-        //                 3. 9 Foot Ceilings, Medium Glass <br>
-        //                 4. 10 Foot Ceilings, Mid-High Glass Package <br>
-        //                 5. 12 Foot Ceilings, Max Glass-High End Package <br>`
-        //   },
+          {
+            title: 'What is a “ Structural Shell Package “?',
+            content: `The Structural Shell Package is our ICCF-ICF preapproved house design for Los Angeles wildfire rebuilding. The shell is the structure built ready for close inspection. This is what is includes
+                        1. Foundation, waterproofed <br>
+                        2. ICCF-ICF Exterior Walls poured to the roof <br>
+                        3. All exterior doors and windows installed <br>
+                        4. Roof is waterproof <br>
+                        5. Temporary safety rails at exterior decks and roof. <br>
+                        <br>
+                        Shell contract is 100% complete. The project is ready for the next wave of construction by others.
+                        By others, the home is ready for interior walls, <br>
+                        3. 9 Foot Ceilings, Medium Glass <br>
+                        4. 10 Foot Ceilings, Mid-High Glass Package <br>
+                        5. 12 Foot Ceilings, Max Glass-High End Package <br>`
+          },
         //   {
         //     title: 'VDC+',
         //     content: `VDC+ is offering the ICCF-ICF Structural Package because well know if the homeowner has a choice between rebuilding with flammable wood or concrete and steel the choice is obvious. So we are offering a unique choice to solve this problem. The building industry is failing the homeowners who must be able to insure the new home when built. Its a fact that you may not get insurance for a wood in the Pacifici palisades this year of 5 years from now.`,
