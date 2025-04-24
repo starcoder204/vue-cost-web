@@ -51,6 +51,30 @@
         activeIndex: null,
         sections: [
           {
+            title: 'What is a Structural Shell Package?',
+            content: `A Structural Shell Package refers to a construction approach where the main structure and exterior envelope of a building are completed, making it weather-tight and ready for interior build-out. This typically includes the foundation, structural walls, roof, exterior doors and windows, but excludes interior finishes, walls, and systems. 
+            The concept is often called “shell and core” or “core and shell” construction, and it’s widely used to provide a secure, flexible base that can be customized in later phases.
+            For wildfire-prone areas like Los Angeles, using advanced materials such as ICCF (Insulated Composite Concrete Forms) or ICF (Insulated Concrete Forms) enhances fire resistance and structural resilience
+            `
+          },
+          {
+            title: 'Our LA Customized ICCF/ICF Structural Shell Package',
+            content: `Our Structural Shell Package is an ICCF-ICF house design strategy tailored for Los Angeles wildfire rebuilding. The shell includes everything from the foundation to the roof, built to be ready for close-in inspection. Once complete, the house is watertight and prepared for interior walls and finishes.
+                        <ul>
+                          What’s Included:
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;Waterproofed foundation</li>
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;ICCF-ICF exterior walls poured to the roof</li>
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;All exterior doors and windows installed</li>
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;Waterproofed roof</li>
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;Temporary safety rails at exterior decks and roof</li>
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&bull;No interior walls yet</li>
+                        </ul>
+                        The Shell contract delivers a 100% complete, weather-tight structure. Your home is now ready for the next phases of construction.
+                        <br>
+                        Summary:
+                        A Structural Shell Package provides a robust, fire-resistant building envelope, ensuring your home is protected and ready for interior customization—an ideal solution for rebuilding in wildfire-prone regions.`
+          },
+          {
             title: 'VDC+ ICCF-ICF Structural Shell Packages to choose from',
             content: `1. 9 Foot Ceilings, Medium Glass, 8 Foot Doors
                         ( $750 SF ) <br>
@@ -58,21 +82,6 @@
                         ( $850 SF ) <br>
                       3. 12 Foot Ceilings, Max Glass-High End Package 12 Foot floor to ceiling Doors and Windows headers to the ceiling 
                         ( $1000 SF ) `
-          },
-          {
-            title: 'What is a “ Structural Shell Package “?',
-            content: `The Structural Shell Package is our ICCF-ICF preapproved house design for Los Angeles wildfire rebuilding. The shell is the structure built ready for close inspection. This is what is includes
-                        1. Foundation, waterproofed <br>
-                        2. ICCF-ICF Exterior Walls poured to the roof <br>
-                        3. All exterior doors and windows installed <br>
-                        4. Roof is waterproof <br>
-                        5. Temporary safety rails at exterior decks and roof. <br>
-                        <br>
-                        Shell contract is 100% complete. The project is ready for the next wave of construction by others.
-                        By others, the home is ready for interior walls, <br>
-                        3. 9 Foot Ceilings, Medium Glass <br>
-                        4. 10 Foot Ceilings, Mid-High Glass Package <br>
-                        5. 12 Foot Ceilings, Max Glass-High End Package <br>`
           },
         //   {
         //     title: 'VDC+',
