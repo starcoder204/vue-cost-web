@@ -13,6 +13,11 @@
                 @calculate="calculateAndDisplayResults"
             />
 
+            <section class="section">
+                <!-- <h3 class="text-black py-3">VDC+ ICCF-ICF Structural Shell Packages to choose from</h3> -->
+                <AccordionMiddle />
+            </section>            
+
             <ResultSection
                 :tabObj="tabObj"
                 :activeTab="activeTab"
@@ -35,13 +40,14 @@
 import SectionTop from '../components/SectionTop.vue';
 import SectionDesc from '../components/SectionDesc.vue';
 import AccordionQueries from '../components/AccordionQueries.vue';
+import AccordionMiddle from '../components/AccordionMiddle.vue';
 import InputSection from '../components/InputSection.vue';
 import ResultSection from '../components/ResultSection.vue';
 import RadioSection from '../components/RadioSection.vue';
 import ScrollToTop from '../components/ScrollToTop.vue';
 import { calculateGCWorkflow, calculateOwnerRepWorkflow, calculateSpecBuilderWorkflow } from '../lib/utils';
 export default {
-  components: { SectionTop, SectionDesc, AccordionQueries, InputSection, ResultSection, RadioSection, ScrollToTop },
+  components: { SectionTop, SectionDesc, AccordionQueries, AccordionMiddle, InputSection, ResultSection, RadioSection, ScrollToTop },
   name: 'Home',
   data() {
     return {
