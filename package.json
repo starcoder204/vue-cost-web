@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "node api.js && vue-cli-service build"
   },
   "dependencies": {
     "autoprefixer": "^9.8.8",

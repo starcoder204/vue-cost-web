@@ -4,8 +4,6 @@ node_modules
 
 
 # local env files
-.env
-.env.local
 .env.*.local
 
 # Log files
@@ -16,7 +14,6 @@ pnpm-debug.log*
 
 # Editor directories and files
 .idea
-.vscode
 *.suo
 *.ntvs*
 *.njsproj
@@ -25,3 +22,4 @@ pnpm-debug.log*
 
 # Firebase cache
 .firebase/
+config.bat
